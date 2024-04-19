@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'auth functons/signUP_IN.dart';
 
+String convertToUpperCase(String input, int n) {
+  if (input == null || input.isEmpty) {
+    return input;
+  }
+
+
+  n = n.clamp(0, input.length);
+
+  
+  String result = input.substring(0, n).toUpperCase() + input.substring(n);
+  return result;
+}
 
 class FirstPageIP extends StatefulWidget {
   const FirstPageIP({super.key});
@@ -12,20 +24,8 @@ class FirstPageIP extends StatefulWidget {
 
 class _FirstPageIPState extends State<FirstPageIP> {
 
-  TextEditingController myController = TextEditingController();
-
-  String greetingMessage = " ";
-
-  void greetUser(){
-    setState(() {
-      greetingMessage = "Hello, " + myController.text;
-    });
-
-  }
-
   final _formkey = GlobalKey<FormState>();
-  bool isLogin = false;
-  String email = ' ';
+  String roll_nm = ' ';
   String password = ' ';
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 child:  Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Text(
-                      'Email',
+                      'roll_nm',
                       textScaler: TextScaler.linear(2),
                       style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
                     ),
@@ -63,21 +63,26 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  key:  ValueKey('Email'),
+                  key:  ValueKey('roll_nm'),
                   decoration: InputDecoration(
-                      hintText: "Email"
+                      hintText: "Roll Number i.e (21L1234)"
                   ),
                   validator: (value){
-                    if(value.toString().contains('@') == false){
-                      return 'email doesnt contain @';
-                    }
-                    else {
-                      return null;
+                    if(value == null){return null;}
+                    value = value.toString();
+                    value = value.toUpperCase();
+
+                    if((value != null) && (value.toString().contains('L') == false)){
+                      return 'Incorrect Roll Number format.';
                     }
                   },
                   onSaved: (value){
                     setState(() {
-                      email = value!;
+                      if(value == null){return null;}
+                      String input = value.toString();
+                      int n = 'XXLXXXX'.length;
+                      String upperCasePart = convertToUpperCase(input.substring(0, n), n);
+                      roll_nm = "$upperCasePart@gmail.com";
                     });
                   },
                 ),
@@ -109,7 +114,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                       hintText: "Password"
                   ),
                   validator: (value){
-                    if(value.toString().length < 3){
+                    if(value != null && value.toString().length < 3){
                       return 'password len small';
                     }
                     else {
@@ -134,22 +139,14 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   if(_formkey.currentState!.validate()){
                     _formkey.currentState!.save();
                   }
-                  signUp(email, password);
-                }, child:isLogin ? Text('Login') : Text("sign up")),
+
+                  signIn(roll_nm, password);
+                }, child:Text('Login')),
               ),
               SizedBox(
                 height: 10,
               ),
-              TextButton(
-                  onPressed: () {
-                    // Your button action here
-                    setState(() {
-                      isLogin = !isLogin;
-                    });
-                  },
-                  child: isLogin
-                      ? Text("Don't have an account? Sign Up")
-                      : Text("Already Signed Up? Login"))
+
             ],
           ),
         ),
