@@ -36,50 +36,94 @@ class _FirstPageIPState extends State<FirstPageIP> {
       body: Form(
         key: _formkey,
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(40)),
+            color: Color(0xFF000000),
+          ),
           margin: EdgeInsets.all((20)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                key:  ValueKey('Email'),
-                decoration: InputDecoration(
-                    hintText: "Enter Email"
+              Align(
+                alignment: Alignment.centerLeft,
+                child:  Container(
+                  margin: EdgeInsets.symmetric(horizontal: 30),
+                    child: Text(
+                      'Email',
+                      textScaler: TextScaler.linear(2),
+                      style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
+                    ),
                 ),
-                validator: (value){
-                  if(value.toString().contains('@') == false){
-                    return 'email doesnt contain @';
-                  }
-                  else {
-                    return null;
-                  }
-                },
-                onSaved: (value){
-                  setState(() {
-                    email = value!;
-                  });
-                },
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF30312C),
+                  borderRadius: BorderRadius.all(Radius.elliptical(30, 30)),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  key:  ValueKey('Email'),
+                  decoration: InputDecoration(
+                      hintText: "Email"
+                  ),
+                  validator: (value){
+                    if(value.toString().contains('@') == false){
+                      return 'email doesnt contain @';
+                    }
+                    else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value){
+                    setState(() {
+                      email = value!;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(height: 20,),
+              Align(
+                alignment: Alignment.centerLeft,
+                child:  Container(
+                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    'Password',
+                    textScaler: TextScaler.linear(2),
+                    style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
+                  ),
+                ),
+              ),
+              SizedBox(height: 7,),
+              Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF30312C),
+                  borderRadius: BorderRadius.all(Radius.elliptical(30, 30)),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  obscureText: true,
+                  key: ValueKey('Password'),
+                  decoration: InputDecoration(
+                      hintText: "Password"
+                  ),
+                  validator: (value){
+                    if(value.toString().length < 3){
+                      return 'password len small';
+                    }
+                    else {
+                      return null;
+                    }
+                  },
+                  onSaved: (value){
+                    setState(() {
+                      password = value!;
+                    });
+                  },
+                ),
               ),
 
-              TextFormField(
-                obscureText: true,
-                key: ValueKey('Password'),
-                decoration: InputDecoration(
-                    hintText: "Enter Password"
-                ),
-                validator: (value){
-                  if(value.toString().length < 3){
-                    return 'password len small';
-                  }
-                  else {
-                    return null;
-                  }
-                },
-                onSaved: (value){
-                  setState(() {
-                    password = value!;
-                  });
-                },
-              ),
               SizedBox(
                 height: 10,
               ),
