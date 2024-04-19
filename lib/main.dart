@@ -5,6 +5,7 @@ import 'firebase_options.dart';
 import 'second_page.dart';
 import 'third_page.dart';
 import 'login_page.dart';
+import 'package:iftikhars_project/ADMIN PAGE/admin.dart';
 
 void main() async{
 
@@ -61,11 +62,11 @@ class HomePage extends StatelessWidget {
 
             ElevatedButton(onPressed: (){
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) =>  FirstPageIP(),
+                context, MaterialPageRoute(builder: (context) =>  AdminPage(),
               ),
               );
             },
-                child: const Text('Login Page')
+                child: const Text('admin Page')
             )
           ],
         )
@@ -92,11 +93,20 @@ class Third extends StatelessWidget {
   }
 }
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Admin extends StatelessWidget {
+  const Admin({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return FirstPageIP();
+    return const AdminPage();
   }
 }
+
+// class Login extends StatelessWidget {
+//   const Login({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return FirstPageIP();
+//   }
+// }

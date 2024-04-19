@@ -22,7 +22,7 @@ signUp(String email, String password) async{
 signIn(String email, String password) async{
   try {
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
+        email: email + "@gmail.com",
         password: password
     );
     print("successfull signin");
