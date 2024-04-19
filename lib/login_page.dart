@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'auth functons/signUP_IN.dart';
@@ -28,6 +30,9 @@ class _FirstPageIPState extends State<FirstPageIP> {
   String roll_nm = ' ';
   String password = ' ';
   @override
+
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,20 +41,22 @@ class _FirstPageIPState extends State<FirstPageIP> {
       body: Form(
         key: _formkey,
         child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(40)),
+          width: 412,
+          height: 500,
+          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(40)),
             color: Color(0xFF000000),
           ),
           margin: EdgeInsets.all((20)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 80,),
               Align(
                 alignment: Alignment.centerLeft,
                 child:  Container(
                   margin: EdgeInsets.symmetric(horizontal: 30),
                     child: Text(
-                      'roll_nm',
+                      'Roll Number',
                       textScaler: TextScaler.linear(2),
                       style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
                     ),
@@ -99,7 +106,6 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   ),
                 ),
               ),
-              SizedBox(height: 7,),
               Container(
                 decoration: BoxDecoration(
                   color: Color(0xFF30312C),
@@ -129,19 +135,30 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 ),
               ),
 
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 30,),
               Container(
-                width: double.infinity,
+                width: 120,
                 height: 50,
+                decoration: BoxDecoration(
+//                  color: Color(0XFFE1F197),
+                ),
                 child: ElevatedButton(onPressed: (){
                   if(_formkey.currentState!.validate()){
                     _formkey.currentState!.save();
                   }
 
                   signIn(roll_nm, password);
-                }, child:Text('Login')),
+                }, child:Text(
+                  'Log In',
+                  textScaler: TextScaler.linear(1.3), 
+                  style: TextStyle(color: Color.fromRGBO(1, 1, 1, 1), fontWeight: FontWeight.bold),
+
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0XFFE1F197),
+                    textStyle: TextStyle()
+                  ),
+                ),
               ),
               SizedBox(
                 height: 10,

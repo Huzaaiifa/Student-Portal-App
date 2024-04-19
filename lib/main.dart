@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Simple Navigation',
+      theme: ThemeData(fontFamily: 'Jost'),
       home: const HomePage(),
     );
   }
