@@ -59,72 +59,90 @@ class SecondPage extends StatelessWidget {
             },
           ),
         ),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: collectionRef.snapshots(),
-          builder: (context, userSnapshot) {
-            if (!userSnapshot.hasData) {
-              return Text('No Data...');
-            } else {
-              List<QueryDocumentSnapshot> items = userSnapshot.data!.docs;
-              return Container(
-                padding: EdgeInsets.all(30),
-                width: 450,
-                height: 300,
-                color: Color(0xFFE1F197),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(items.isNotEmpty ? items[0]['name'] : 'No Name'),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(items.isNotEmpty
-                                  ? items[0]['blood_group']
-                                  : 'No Blood Group'),
-                              SizedBox(
-                                height: 5,
+        body: Builder(
+          builder: (context) => Container(
+            color: Color(0xFFE7EBD0), // Set background color to E7EBD0
+            child: StreamBuilder<QuerySnapshot>(
+              stream: collectionRef.snapshots(),
+              builder: (context, userSnapshot) {
+                if (!userSnapshot.hasData) {
+                  return Center(
+                    child: Text('No Data...'),
+                  );
+                } else {
+                  List<QueryDocumentSnapshot> items = userSnapshot.data!.docs;
+                  return Stack(
+                    children: [
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          color: Colors.black,
+                          height: MediaQuery.of(context).size.height *
+                              0.15, // Set the height to cover 25% of the screen
+                        ),
+                      ),
+                      Positioned(
+                        top: 65, // Position the box 104 pixels from the top
+                        left: 45, // Position the box 20 pixels from the left
+                        child: Container(
+                          width: 318,
+                          height: 160,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFE1F197), // Set color to E1F197
+                            borderRadius: BorderRadius.circular(
+                                25), // Rounded corners with a radius of 25 pixels
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.25),
+                                spreadRadius: 0,
+                                blurRadius: 4,
+                                offset:
+                                    Offset(0, 4), // changes position of shadow
                               ),
-                              Text(items.isNotEmpty
-                                  ? items[0]['CNIC']
-                                  : 'No CNIC'),
                             ],
                           ),
-                          //SizedBox(width: 30),
-                          Column(children: [
-                            Text(items.isNotEmpty
-                                ? items[0]['email']
-                                : 'No Email'),
-                            SizedBox(
-                              height: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Name: ${items.isNotEmpty ? items[0]['name'] : 'No Name'}',
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'Blood Group: ${items.isNotEmpty ? items[0]['blood_group'] : 'No Blood Group'}',
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'CNIC: ${items.isNotEmpty ? items[0]['CNIC'] : 'No CNIC'}',
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'Email: ${items.isNotEmpty ? items[0]['email'] : 'No Email'}',
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                                SizedBox(height: 4),
+                                Text(
+                                  'DOB: ${items.isNotEmpty ? (items[0]['DOB'] != null ? items[0]['DOB'].toDate().toString() : 'No DOB') : 'No DOB'}',
+                                  style: TextStyle(fontSize: 11),
+                                ),
+                              ],
                             ),
-                            Text(
-                              items.isNotEmpty
-                                  ? (items[0]['DOB'] != null
-                                      ? items[0]['DOB'].toDate().toString()
-                                      : 'No DOB')
-                                  : 'No DOB',
-                            ),
-                            ElevatedButton(
-                                onPressed: () async {
-                                  await getData();
-                                },
-                                child: Text("CLICK ME!!!! :3"))
-                          ])
-                        ])
-                  ],
-                ),
-              );
-            }
-          },
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
+          ),
         ));
   }
 }
