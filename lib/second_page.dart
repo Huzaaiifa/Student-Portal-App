@@ -34,34 +34,37 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext build) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Padding(
-            padding: EdgeInsets.only(left: 35),
-            child: Text(
-              'Flex Student Portal',
-              style: TextStyle(
-                color: Colors.white, // Set text color to white
-                fontWeight: FontWeight.bold, // Optional: Adjust font weight
+        appBar: PreferredSize(
+          preferredSize:
+              Size.fromHeight(100), // Adjust the height of the app bar
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            title: Padding(
+              padding: EdgeInsets.only(left: 12),
+              child: Text(
+                'Flex Student Portal',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
               ),
             ),
-          ),
-          backgroundColor:
-              Colors.black, // Set the background color of the app bar to black
-          leading: IconButton(
-            icon: Icon(
-              Icons.reorder, // Use Icons.reorder for the reorder icon
-              color: Colors.white, // Set the color of the reorder icon to white
+            backgroundColor: Colors.black,
+            leading: IconButton(
+              icon: Icon(
+                Icons.reorder,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                print('Reorder icon pressed!');
+              },
             ),
-            onPressed: () {
-              // Define the action when the reorder icon is pressed
-              print('Reorder icon pressed!');
-            },
           ),
         ),
         body: Builder(
           builder: (context) => Container(
-            color: Color(0xFFE7EBD0), // Set background color to E7EBD0
+            color: Color(0xFFE7EBD0),
             child: StreamBuilder<QuerySnapshot>(
               stream: collectionRef.snapshots(),
               builder: (context, userSnapshot) {
@@ -79,58 +82,68 @@ class SecondPage extends StatelessWidget {
                         right: 0,
                         child: Container(
                           color: Colors.black,
-                          height: MediaQuery.of(context).size.height *
-                              0.15, // Set the height to cover 25% of the screen
+                          height: MediaQuery.of(context).size.height * 0.13,
                         ),
                       ),
                       Positioned(
-                        top: 65, // Position the box 104 pixels from the top
-                        left: 45, // Position the box 20 pixels from the left
+                        top: 15,
+                        left: 37,
                         child: Container(
                           width: 318,
                           height: 160,
                           decoration: BoxDecoration(
-                            color: Color(0xFFE1F197), // Set color to E1F197
-                            borderRadius: BorderRadius.circular(
-                                25), // Rounded corners with a radius of 25 pixels
+                            color: Color(0xFFE1F197),
+                            borderRadius: BorderRadius.circular(25),
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.25),
                                 spreadRadius: 0,
                                 blurRadius: 4,
-                                offset:
-                                    Offset(0, 4), // changes position of shadow
+                                offset: Offset(0, 4),
                               ),
                             ],
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .center, // Center align the text
+                              mainAxisAlignment: MainAxisAlignment.center,
+
                               children: [
                                 Text(
                                   'Name: ${items.isNotEmpty ? items[0]['name'] : 'No Name'}',
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 4),
+                                SizedBox(height: 5),
                                 Text(
                                   'Blood Group: ${items.isNotEmpty ? items[0]['blood_group'] : 'No Blood Group'}',
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 4),
+                                SizedBox(height: 5),
                                 Text(
                                   'CNIC: ${items.isNotEmpty ? items[0]['CNIC'] : 'No CNIC'}',
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 4),
+                                SizedBox(height: 5),
                                 Text(
                                   'Email: ${items.isNotEmpty ? items[0]['email'] : 'No Email'}',
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 4),
+                                SizedBox(height: 5),
                                 Text(
                                   'DOB: ${items.isNotEmpty ? (items[0]['DOB'] != null ? items[0]['DOB'].toDate().toString() : 'No DOB') : 'No DOB'}',
-                                  style: TextStyle(fontSize: 11),
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ],
                             ),
