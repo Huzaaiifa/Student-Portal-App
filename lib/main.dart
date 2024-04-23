@@ -6,7 +6,8 @@ import 'second_page.dart';
 import 'third_page.dart';
 import 'login_page.dart';
 
-void main() async{
+void main() async
+{
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -80,7 +81,7 @@ class Second extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SecondPage();
+    return  SecondPage(rn: '21L-7715',);
   }
 }
 

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:iftikhars_project/second_page.dart';
 
 import 'auth functons/signUP_IN.dart';
 
@@ -29,6 +30,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
   final _formkey = GlobalKey<FormState>();
   String roll_nm = ' ';
   String password = ' ';
+  String rn = ' ';
   @override
 
 
@@ -89,6 +91,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                       String input = value.toString();
                       int n = 'XXLXXXX'.length;
                       String upperCasePart = convertToUpperCase(input.substring(0, n), n);
+
                       roll_nm = "$upperCasePart@gmail.com";
                     });
                   },
@@ -142,12 +145,41 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 decoration: BoxDecoration(
 //                  color: Color(0XFFE1F197),
                 ),
-                child: ElevatedButton(onPressed: (){
+                child: ElevatedButton(onPressed: () async {
                   if(_formkey.currentState!.validate()){
                     _formkey.currentState!.save();
                   }
 
-                  signIn(roll_nm, password);
+                  int result = await signIn(roll_nm, password);
+                  if(result == 1) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SecondPage(rn: roll_nm),
+                      ),
+
+                    );
+                  }
+                  else
+                    {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Hamza Not Found"),
+                            content: Text("No user found for the provided credentials."),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("OK"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                 }, child:Text(
                   'Log In',
                   textScaler: TextScaler.linear(1.3), 

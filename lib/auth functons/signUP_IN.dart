@@ -19,20 +19,30 @@ signUp(String email, String password) async{
   }
 }
 
-signIn(String email, String password) async{
+Future<int> signIn(String email, String password) async {
   try {
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password
-
+      email: email,
+      password: password,
     );
 
-    print("successfull signin");
+    print("Successful sign-in");
+    return 1; // Return 1 for successful login
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       print('No user found for that email.');
+      return 0; // Return 0 for user not found
     } else if (e.code == 'wrong-password') {
       print('Wrong password provided for that user.');
+      return -1; // Return -1 for wrong password
+    } else {
+      // Handle other authentication errors
+      print('Error: ${e.code}');
+      return -2; // Return -2 for other errors
     }
+  } catch (e) {
+    // Handle other exceptions
+    print('Error: $e');
+    return -3; // Return -3 for other exceptions
   }
 }

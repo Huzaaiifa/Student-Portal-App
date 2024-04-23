@@ -1,4 +1,4 @@
-# iftikhars_project
+# SwiftCharts_project
 
 A new Flutter project.
 
