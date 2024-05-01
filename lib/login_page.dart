@@ -166,7 +166,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text("Hamza Not Found"),
+                            title: Text("User Not Found"),
                             content: Text("No user found for the provided credentials."),
                             actions: [
                               TextButton(
