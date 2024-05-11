@@ -5,6 +5,7 @@ import 'firebase_options.dart';
 import 'second_page.dart';
 import 'third_page.dart';
 import 'login_page.dart';
+import 'package:iftikhars_project/Marks.dart';
 
 void main() async
 {
@@ -63,6 +64,15 @@ class HomePage extends StatelessWidget {
 
             ElevatedButton(onPressed: (){
               Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const MarksPage(),
+              ),
+              );
+            },
+                child: const Text('Marks Page')
+            ),
+
+            ElevatedButton(onPressed: (){
+              Navigator.push(
                 context, MaterialPageRoute(builder: (context) =>  FirstPageIP(),
               ),
               );
@@ -94,6 +104,16 @@ class Third extends StatelessWidget {
   }
 }
 
+class MarksPage extends StatelessWidget {
+  const MarksPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Marks(rollNumber: '21L5378',);
+  }
+}
+
+
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -102,3 +122,5 @@ class Login extends StatelessWidget {
     return FirstPageIP();
   }
 }
+
+
