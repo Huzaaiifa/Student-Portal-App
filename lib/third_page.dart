@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 //import 'dart:js';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 
-import 'package:flutter/painting.dart';
 
 
 
@@ -20,14 +18,14 @@ class _ThirdPageState extends State<ThirdPage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text("MY PAGE"),
+        title: const Text("MY PAGE"),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: StreamBuilder<QuerySnapshot>(stream: FirebaseFirestore.instance.collection('users').snapshots(),
             builder: (context, userSnapshot){
               if(userSnapshot.connectionState==ConnectionState.waiting){
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }

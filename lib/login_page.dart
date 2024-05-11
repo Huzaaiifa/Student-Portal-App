@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:iftikhars_project/second_page.dart';
@@ -6,7 +5,7 @@ import 'package:iftikhars_project/second_page.dart';
 import 'auth functons/signUP_IN.dart';
 
 String convertToUpperCase(String input, int n) {
-  if (input == null || input.isEmpty) {
+  if (input.isEmpty) {
     return input;
   }
 
@@ -38,26 +37,26 @@ class _FirstPageIPState extends State<FirstPageIP> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign In"),
+        title: const Text("Sign In"),
       ),
       body: Form(
         key: _formkey,
         child: Container(
           width: 412,
           height: 500,
-          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(40)),
+          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(40)),
             color: Color(0xFF000000),
           ),
-          margin: EdgeInsets.all((20)),
+          margin: const EdgeInsets.all((20)),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 80,),
+              const SizedBox(height: 80,),
               Align(
                 alignment: Alignment.centerLeft,
                 child:  Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30),
-                    child: Text(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                    child: const Text(
                       'Roll Number',
                       textScaler: TextScaler.linear(2),
                       style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
@@ -65,15 +64,15 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF30312C),
                   borderRadius: BorderRadius.all(Radius.elliptical(30, 30)),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  key:  ValueKey('roll_nm'),
-                  decoration: InputDecoration(
+                  key:  const ValueKey('roll_nm'),
+                  decoration: const InputDecoration(
                       hintText: "Roll Number i.e (21L1234)"
                   ),
                   validator: (value){
@@ -84,10 +83,11 @@ class _FirstPageIPState extends State<FirstPageIP> {
                     if((value != null) && (value.toString().contains('L') == false)){
                       return 'Incorrect Roll Number format.';
                     }
+                    return null;
                   },
                   onSaved: (value){
                     setState(() {
-                      if(value == null){return null;}
+                      if(value == null){return;}
                       String input = value.toString();
                       int n = 'XXLXXXX'.length;
                       String upperCasePart = convertToUpperCase(input.substring(0, n), n);
@@ -97,12 +97,12 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   },
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Align(
                 alignment: Alignment.centerLeft,
                 child:  Container(
-                  margin: EdgeInsets.symmetric(horizontal: 30),
-                  child: Text(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  child: const Text(
                     'Password',
                     textScaler: TextScaler.linear(2),
                     style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.95)),
@@ -110,16 +110,16 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF30312C),
                   borderRadius: BorderRadius.all(Radius.elliptical(30, 30)),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
                   obscureText: true,
-                  key: ValueKey('Password'),
-                  decoration: InputDecoration(
+                  key: const ValueKey('Password'),
+                  decoration: const InputDecoration(
                       hintText: "Password"
                   ),
                   validator: (value){
@@ -138,11 +138,11 @@ class _FirstPageIPState extends State<FirstPageIP> {
                 ),
               ),
 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               Container(
                 width: 120,
                 height: 50,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
 //                  color: Color(0XFFE1F197),
                 ),
                 child: ElevatedButton(onPressed: () async {
@@ -166,33 +166,33 @@ class _FirstPageIPState extends State<FirstPageIP> {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text("User Not Found"),
-                            content: Text("No user found for the provided credentials."),
+                            title: const Text("User Not Found"),
+                            content: const Text("No user found for the provided credentials."),
                             actions: [
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text("OK"),
+                                child: const Text("OK"),
                               ),
                             ],
                           );
                         },
                       );
                     }
-                }, child:Text(
+                },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0XFFE1F197),
+                    textStyle: const TextStyle()
+                  ), child:const Text(
                   'Log In',
                   textScaler: TextScaler.linear(1.3), 
                   style: TextStyle(color: Color.fromRGBO(1, 1, 1, 1), fontWeight: FontWeight.bold),
 
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0XFFE1F197),
-                    textStyle: TextStyle()
-                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
 

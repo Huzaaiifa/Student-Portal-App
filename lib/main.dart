@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'TransitionPage.dart';
 import 'firebase_options.dart';
 
 import 'second_page.dart';
@@ -18,20 +19,21 @@ void main() async
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-      home: const HomePage(),
+      home: const TransitionPage(),
+     // home: const HomePage(),
     );
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,7 @@ class HomePage extends StatelessWidget {
 
             ElevatedButton(onPressed: (){
               Navigator.push(
-                context, MaterialPageRoute(builder: (context) =>  FirstPageIP(),
+                context, MaterialPageRoute(builder: (context) =>  const FirstPageIP(),
               ),
               );
             },
@@ -87,7 +89,7 @@ class HomePage extends StatelessWidget {
 }
 
 class Second extends StatelessWidget {
-  const Second({Key? key}) : super(key: key);
+  const Second({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +98,7 @@ class Second extends StatelessWidget {
 }
 
 class Third extends StatelessWidget {
-  const Third({Key? key}) : super(key: key);
+  const Third({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,11 +117,11 @@ class MarksPage extends StatelessWidget {
 
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return FirstPageIP();
+    return const FirstPageIP();
   }
 }
 
