@@ -33,8 +33,9 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
+  //const HomePage({super.key});
+  String rollNumber;
+  HomePage({required this.rollNumber});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
