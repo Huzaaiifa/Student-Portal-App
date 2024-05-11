@@ -79,6 +79,14 @@ class customExpandableTileState extends State<customExpandableTile> {
                         : Colors.white, // Ternary operator for icon
                   ),
                   if (_isExpanded) // Conditional widget for content
+                    Text(
+                        widget.title,
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),),
+                  if (!_isExpanded) // Conditional rendering of the content
                     widget.content,
                 ],
               ),

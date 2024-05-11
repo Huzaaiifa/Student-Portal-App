@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;
 
 class attpageWidget extends StatelessWidget {
+  final String rn;
+
+  attpageWidget({required this.rn});
+
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator MarkspageWidget - FRAME

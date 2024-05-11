@@ -156,7 +156,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomePage(rollNumber: roll_nm),
+                        builder: (context) => SecondPage(rn: roll_nm),
                       ),
 
                     );

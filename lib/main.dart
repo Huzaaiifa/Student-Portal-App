@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-      // home: const TransitionPage(),
-      home: trspageWidget(),
+       home: const TransitionPage(),
+      //home: MenupageWidget(),
     );
   }
 }

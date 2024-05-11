@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class MarkspageWidget extends StatefulWidget {
+  final String rn;
+
+  MarkspageWidget({required this.rn});
+
   @override
-  _MarkspageWidgetState createState() => _MarkspageWidgetState();
+  _MarkspageWidgetState createState() => _MarkspageWidgetState(rn:rn);
 }
 
 class _MarkspageWidgetState extends State<MarkspageWidget> {
+
+
+  final String rn;
+
+  _MarkspageWidgetState({required this.rn});
+
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator MarkspageWidget - FRAME

@@ -3,6 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;import 'dart:math' as math;
 
 class trspageWidget extends StatefulWidget {
+  final String rn;
+
+  trspageWidget({required this.rn});
+
   @override
   trspageWidgetState createState() => trspageWidgetState();
 }

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'custom_expandable_tile.dart';
+import 'temp1.dart';
 
 String userName = "random";
 String RollNo = "76L9051";
@@ -49,7 +50,10 @@ class _SecondPageState extends State<SecondPage> {
               color: Colors.white,
             ),
             onPressed: () {
-              print('Reorder icon pressed!');
+              Navigator.push(
+                  build,
+                  MaterialPageRoute(
+                      builder: (context) => MenupageWidget(rn: rollNm)));;
             },
           ),
         ),
@@ -164,19 +168,27 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                         child: SingleChildScrollView(
                           // Wrap the Column with SingleChildScrollView
-                          child: Column(
+                         child: Column(
                             children: [
                               SizedBox(height: 33),
                               IntrinsicHeight(
                                 child: customExpandableTile(
                                   title: 'Personal Information',
-                                  content: Text(
-                                    'Personal Information content goes here...',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black.withOpacity(1.0),
-                                        fontWeight: FontWeight.w600),
-                                  ),
+                                  content://Expanded(
+                                                 Container(
+                                                  width: 200,
+                                                        child: Text(
+                                                       '${userData?['personal information'] ?? 'No Personal Information'}',
+                                                           style: TextStyle(
+                                                              fontSize: 14,
+                                                          color: Colors.black.withOpacity(1.0),
+                                                        ),
+                                                       softWrap: true,
+                                                        textAlign: TextAlign.justify,
+                                                      ),
+                                                  ),
+                                              //     ),
+
                                   color: Color(0xFF30312C),
                                   shadowColor: Colors.black.withOpacity(0.25),
                                   shadowOffset: Offset(0, 4),
