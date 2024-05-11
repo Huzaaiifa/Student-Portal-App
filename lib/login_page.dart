@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iftikhars_project/second_page.dart';
+import 'main.dart';
 
 import 'auth functons/signUP_IN.dart';
 
@@ -155,7 +156,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SecondPage(rn: roll_nm),
+                        builder: (context) => HomePage(rollNumber: roll_nm),
                       ),
 
                     );

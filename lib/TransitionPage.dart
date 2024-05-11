@@ -42,7 +42,7 @@ class _TransitionPageState extends State<TransitionPage>
 
         _controller.forward().whenComplete(() {
           // Navigate to LoginPage after animation completes
-          Timer(const Duration(seconds: 5), () {
+          Timer(const Duration(seconds: 3), () {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const FirstPageIP()),
