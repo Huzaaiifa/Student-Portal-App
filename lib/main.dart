@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'TransitionPage.dart';
 import 'firebase_options.dart';
-
+import 'temp1.dart';
+import 'marks1.dart';
+import 'attendence.dart';
 import 'second_page.dart';
 import 'third_page.dart';
 import 'login_page.dart';
+import 'Transcript.dart';
+import 'transcript1.dart';
 import 'package:iftikhars_project/Marks.dart';
 
 void main() async
@@ -26,8 +30,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-      home: const TransitionPage(),
-     // home: const HomePage(),
+      // home: const TransitionPage(),
+      home: trspageWidget(),
     );
   }
 }
