@@ -2,6 +2,7 @@ import 'dart:js';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'custom_expandable_tile.dart';
 
 String userName = "random";
 String RollNo = "76L9051";
@@ -18,7 +19,7 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
   final CollectionReference collectionRef =
-  FirebaseFirestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('users');
 
   late List<bool> _isOpen = List.filled(4, false);
 
@@ -65,7 +66,7 @@ class _SecondPageState extends State<SecondPage> {
                 );
               } else {
                 Map<String, dynamic>? userData =
-                userSnapshot.data!.data() as Map<String, dynamic>?;
+                    userSnapshot.data!.data() as Map<String, dynamic>?;
                 return Stack(
                   children: [
                     Positioned(
@@ -152,177 +153,254 @@ class _SecondPageState extends State<SecondPage> {
                             topLeft: Radius.circular(25),
                             topRight: Radius.circular(25),
                           ),
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 45),
-                            ExpansionPanelList(
-                              expansionCallback:
-                                  (int panelIndex, bool isExpanded) {
-                                setState(() {
-                                  _isOpen[panelIndex] = !isExpanded;
-                                });
-                              },
-                              children: [
-                                ExpansionPanel(
-                                  headerBuilder: (context, isOpen) {
-                                    return Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 27),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Personal Information',
-                                            style: TextStyle(
-                                                fontSize: 14.5,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            isOpen
-                                                ? Icons.keyboard_arrow_up
-                                                : Icons.keyboard_arrow_down,
-                                            color: Colors.white,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  body: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 27),
-                                    child: Text(
-                                      'Personal Information Expanded',
-                                      style: TextStyle(
-                                          fontSize: 14.5,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  isExpanded: _isOpen[0],
-                                ),
-                                ExpansionPanel(
-                                  headerBuilder: (context, isOpen) {
-                                    return Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 27),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Contact Information',
-                                            style: TextStyle(
-                                                fontSize: 14.5,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            isOpen
-                                                ? Icons.keyboard_arrow_up
-                                                : Icons.keyboard_arrow_down,
-                                            color: Colors.white,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  body: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 27),
-                                    child: Text(
-                                      'Contact Information Expanded',
-                                      style: TextStyle(
-                                          fontSize: 14.5,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  isExpanded: _isOpen[1],
-                                ),
-                                ExpansionPanel(
-                                  headerBuilder: (context, isOpen) {
-                                    return Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 27),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Family Information',
-                                            style: TextStyle(
-                                                fontSize: 14.5,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            isOpen
-                                                ? Icons.keyboard_arrow_up
-                                                : Icons.keyboard_arrow_down,
-                                            color: Colors.white,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  body: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 27),
-                                    child: Text(
-                                      'Family Information Expanded',
-                                      style: TextStyle(
-                                          fontSize: 14.5,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  isExpanded: _isOpen[2],
-                                ),
-                                ExpansionPanel(
-                                  headerBuilder: (context, isOpen) {
-                                    return Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 27),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Academic Calendar',
-                                            style: TextStyle(
-                                                fontSize: 14.5,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            isOpen
-                                                ? Icons.keyboard_arrow_up
-                                                : Icons.keyboard_arrow_down,
-                                            color: Colors.white,
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                  body: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 27),
-                                    child: Text(
-                                      'Academic Calendar Expanded',
-                                      style: TextStyle(
-                                          fontSize: 14.5,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  isExpanded: _isOpen[3],
-                                ),
-                              ],
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.25),
+                              spreadRadius: 0,
+                              blurRadius: 4,
+                              offset: Offset(0, 4),
                             ),
                           ],
+                        ),
+                        child: SingleChildScrollView(
+                          // Wrap the Column with SingleChildScrollView
+                          child: Column(
+                            children: [
+                              SizedBox(height: 37),
+                              IntrinsicHeight(
+                                child: customExpandableTile(
+                                  title: 'Personal Information',
+                                  content: Text(
+                                    'Personal Information content goes here...',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white.withOpacity(1.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  color: Color(0xFF30312C),
+                                  shadowColor: Colors.black.withOpacity(0.25),
+                                  shadowOffset: Offset(0, 4),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              // Add spacing between tiles
+
+                              IntrinsicHeight(
+                                child: customExpandableTile(
+                                  title: 'Contact Information',
+                                  content: Text(
+                                    'Contact Information content goes here...',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white.withOpacity(1.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  color: Color(0xFF30312C),
+                                  shadowColor: Colors.black.withOpacity(0.25),
+                                  shadowOffset: Offset(0, 4),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              IntrinsicHeight(
+                                child: customExpandableTile(
+                                  title: 'Family Information',
+                                  content: Text(
+                                    'Family Information content goes here...',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white.withOpacity(1.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  color: Color(0xFF30312C),
+                                  shadowColor: Colors.black.withOpacity(0.25),
+                                  shadowOffset: Offset(0, 4),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              IntrinsicHeight(
+                                child: customExpandableTile(
+                                  title: 'Academic Calender',
+                                  content: Text(
+                                    'Academic Calender content goes here...',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white.withOpacity(1.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  color: Color(0xFF30312C),
+                                  shadowColor: Colors.black.withOpacity(0.25),
+                                  shadowOffset: Offset(0, 4),
+                                ),
+                              ),
+                              SizedBox(height: 20)
+                              // ExpansionPanelList(
+                              //   expansionCallback:
+                              //       (int panelIndex, bool isExpanded) {
+                              //     setState(() {
+                              //       _isOpen[panelIndex] = !isExpanded;
+                              //     });
+                              //   },
+                              //   children: [
+                              //     ExpansionPanel(
+                              //       headerBuilder: (context, isOpen) {
+                              //         return Container(
+                              //           padding: EdgeInsets.symmetric(
+                              //               horizontal: 27),
+                              //           child: Row(
+                              //             mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //             children: [
+                              //               Text(
+                              //                 'Personal Information',
+                              //                 style: TextStyle(
+                              //                     fontSize: 14.5,
+                              //                     color: Colors.white,
+                              //                     fontWeight: FontWeight.w600),
+                              //               ),
+                              //               Icon(
+                              //                 isOpen
+                              //                     ? Icons.keyboard_arrow_up
+                              //                     : Icons.keyboard_arrow_down,
+                              //                 color: Colors.white,
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       body: Container(
+                              //         padding: EdgeInsets.symmetric(
+                              //             horizontal: 27),
+                              //         child: Text(
+                              //           'Personal Information Expanded',
+                              //           style: TextStyle(
+                              //               fontSize: 14.5,
+                              //               color: Colors.white,
+                              //               fontWeight: FontWeight.w600),
+                              //         ),
+                              //       ),
+                              //       isExpanded: _isOpen[0],
+                              //     ),
+                              //     ExpansionPanel(
+                              //       headerBuilder: (context, isOpen) {
+                              //         return Container(
+                              //           padding: EdgeInsets.symmetric(
+                              //               horizontal: 27),
+                              //           child: Row(
+                              //             mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //             children: [
+                              //               Text(
+                              //                 'Contact Information',
+                              //                 style: TextStyle(
+                              //                     fontSize: 14.5,
+                              //                     color: Colors.white,
+                              //                     fontWeight: FontWeight.w600),
+                              //               ),
+                              //               Icon(
+                              //                 isOpen
+                              //                     ? Icons.keyboard_arrow_up
+                              //                     : Icons.keyboard_arrow_down,
+                              //                 color: Colors.white,
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       body: Container(
+                              //         padding: EdgeInsets.symmetric(
+                              //             horizontal: 27),
+                              //         child: Text(
+                              //           'Contact Information Expanded',
+                              //           style: TextStyle(
+                              //               fontSize: 14.5,
+                              //               color: Colors.white,
+                              //               fontWeight: FontWeight.w600),
+                              //         ),
+                              //       ),
+                              //       isExpanded: _isOpen[1],
+                              //     ),
+                              //     ExpansionPanel(
+                              //       headerBuilder: (context, isOpen) {
+                              //         return Container(
+                              //           padding: EdgeInsets.symmetric(
+                              //               horizontal: 27),
+                              //           child: Row(
+                              //             mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //             children: [
+                              //               Text(
+                              //                 'Family Information',
+                              //                 style: TextStyle(
+                              //                     fontSize: 14.5,
+                              //                     color: Colors.white,
+                              //                     fontWeight: FontWeight.w600),
+                              //               ),
+                              //               Icon(
+                              //                 isOpen
+                              //                     ? Icons.keyboard_arrow_up
+                              //                     : Icons.keyboard_arrow_down,
+                              //                 color: Colors.white,
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       body: Container(
+                              //         padding: EdgeInsets.symmetric(
+                              //             horizontal: 27),
+                              //         child: Text(
+                              //           'Family Information Expanded',
+                              //           style: TextStyle(
+                              //               fontSize: 14.5,
+                              //               color: Colors.white,
+                              //               fontWeight: FontWeight.w600),
+                              //         ),
+                              //       ),
+                              //       isExpanded: _isOpen[2],
+                              //     ),
+                              //     ExpansionPanel(
+                              //       headerBuilder: (context, isOpen) {
+                              //         return Container(
+                              //           padding: EdgeInsets.symmetric(
+                              //               horizontal: 27),
+                              //           child: Row(
+                              //             mainAxisAlignment:
+                              //             MainAxisAlignment.spaceBetween,
+                              //             children: [
+                              //               Text(
+                              //                 'Academic Calendar',
+                              //                 style: TextStyle(
+                              //                     fontSize: 14.5,
+                              //                     color: Colors.white,
+                              //                     fontWeight: FontWeight.w600),
+                              //               ),
+                              //               Icon(
+                              //                 isOpen
+                              //                     ? Icons.keyboard_arrow_up
+                              //                     : Icons.keyboard_arrow_down,
+                              //                 color: Colors.white,
+                              //               ),
+                              //             ],
+                              //           ),
+                              //         );
+                              //       },
+                              //       body: Container(
+                              //         padding: EdgeInsets.symmetric(
+                              //             horizontal: 27),
+                              //         child: Text(
+                              //           'Academic Calendar Expanded',
+                              //           style: TextStyle(
+                              //               fontSize: 14.5,
+                              //               color: Colors.white,
+                              //               fontWeight: FontWeight.w600),
+                              //         ),
+                              //       ),
+                              //       isExpanded: _isOpen[3],
+                              //     ),
+                              //   ],
+                              // ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
