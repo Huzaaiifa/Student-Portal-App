@@ -144,7 +144,7 @@ class _SecondPageState extends State<SecondPage> {
                     Positioned(
                       top: 225,
                       left: 37,
-                      bottom: 0,
+                      bottom: 0 - 16.0,
                       child: Container(
                         width: 325,
                         decoration: BoxDecoration(
@@ -166,7 +166,7 @@ class _SecondPageState extends State<SecondPage> {
                           // Wrap the Column with SingleChildScrollView
                           child: Column(
                             children: [
-                              SizedBox(height: 37),
+                              SizedBox(height: 33),
                               IntrinsicHeight(
                                 child: customExpandableTile(
                                   title: 'Personal Information',
@@ -174,7 +174,7 @@ class _SecondPageState extends State<SecondPage> {
                                     'Personal Information content goes here...',
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white.withOpacity(1.0),
+                                        color: Colors.black.withOpacity(1.0),
                                         fontWeight: FontWeight.w600),
                                   ),
                                   color: Color(0xFF30312C),
@@ -192,7 +192,7 @@ class _SecondPageState extends State<SecondPage> {
                                     'Contact Information content goes here...',
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white.withOpacity(1.0),
+                                        color: Colors.black.withOpacity(1.0),
                                         fontWeight: FontWeight.w600),
                                   ),
                                   color: Color(0xFF30312C),
@@ -208,7 +208,7 @@ class _SecondPageState extends State<SecondPage> {
                                     'Family Information content goes here...',
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white.withOpacity(1.0),
+                                        color: Colors.black.withOpacity(1.0),
                                         fontWeight: FontWeight.w600),
                                   ),
                                   color: Color(0xFF30312C),
@@ -224,7 +224,7 @@ class _SecondPageState extends State<SecondPage> {
                                     'Academic Calender content goes here...',
                                     style: TextStyle(
                                         fontSize: 14,
-                                        color: Colors.white.withOpacity(1.0),
+                                        color: Colors.black.withOpacity(1.0),
                                         fontWeight: FontWeight.w600),
                                   ),
                                   color: Color(0xFF30312C),

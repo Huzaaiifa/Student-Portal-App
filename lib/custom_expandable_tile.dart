@@ -1,7 +1,7 @@
-import 'dart:js';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart'; // Remove 'dart:js' if not needed
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/animation.dart';
 
 class customExpandableTile extends StatefulWidget {
   final String title;
@@ -24,6 +24,8 @@ class customExpandableTile extends StatefulWidget {
 }
 
 class customExpandableTileState extends State<customExpandableTile> {
+  final Color _startColor = Colors.white; // Initial color (collapsed)
+  final Color _endColor = Color(0xFFDAE5A2);
   bool _isExpanded = false;
 
   void toggleExpansion() {
@@ -39,10 +41,10 @@ class customExpandableTileState extends State<customExpandableTile> {
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200), // Adjust animation duration
         curve: Curves.easeInOut, // Adjust animation curve
-        width: _isExpanded ? 270 : 250, // Width changes based on expansion
-        height: _isExpanded ? 210 : 55, // Height changes based on expansion
+        width: _isExpanded ? 270 : 258, // Width changes based on expansion
+        height: _isExpanded ? 210 : 52, // Height changes based on expansion
         decoration: BoxDecoration(
-          color: widget.color,
+          color: _isExpanded ? Color(0xFFDAE5A2) : Color(0xFF30312C),
           borderRadius: BorderRadius.circular(25),
           boxShadow: [
             BoxShadow(
@@ -54,19 +56,32 @@ class customExpandableTileState extends State<customExpandableTile> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
               Text(
                 widget.title,
                 style: TextStyle(
                   fontSize: 14.0,
-                  color: Colors.white.withOpacity(1.0),
+                  color: _isExpanded ? Colors.black : Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              if (_isExpanded)
-                widget.content, // Content displayed only when expanded
+              Spacer(),
+              Row(
+                // Use Row for icon and content (optional)
+                children: [
+                  Icon(
+                    _isExpanded
+                        ? Icons.arrow_circle_down
+                        : Icons.arrow_circle_right_outlined,
+                    color: _isExpanded
+                        ? Colors.black
+                        : Colors.white, // Ternary operator for icon
+                  ),
+                  if (_isExpanded) // Conditional widget for content
+                    widget.content,
+                ],
+              ),
             ],
           ),
         ),
