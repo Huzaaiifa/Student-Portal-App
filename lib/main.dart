@@ -8,6 +8,7 @@ import 'third_page.dart';
 import 'login_page.dart';
 import 'package:iftikhars_project/Marks.dart';
 
+import 'package:iftikhars_project/Transcript.dart';
 void main() async
 {
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-      home: const TransitionPage(),
-     // home: const HomePage(),
+      //home: const TransitionPage(),
+     home:  HomePage(rollNumber: '21L5378',),
     );
   }
 }
@@ -76,6 +77,15 @@ class HomePage extends StatelessWidget {
 
             ElevatedButton(onPressed: (){
               Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const TranscriptPage(),
+              ),
+              );
+            },
+                child: const Text('transcript Page')
+            ),
+
+            ElevatedButton(onPressed: (){
+              Navigator.push(
                 context, MaterialPageRoute(builder: (context) =>  const FirstPageIP(),
               ),
               );
@@ -115,6 +125,16 @@ class MarksPage extends StatelessWidget {
     return  Marks(rollNumber: '21L5378',);
   }
 }
+
+class TranscriptPage extends StatelessWidget {
+  const TranscriptPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Transcript(rollNumber: '21L5378',);
+  }
+}
+
 
 
 class Login extends StatelessWidget {

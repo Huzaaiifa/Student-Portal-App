@@ -106,7 +106,7 @@ class _TranscriptState extends State<Transcript> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Course: $courseName',
+                'Course: ${data?['courseName'] ?? 'No Course Name'}',
                 style: TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
@@ -119,6 +119,7 @@ class _TranscriptState extends State<Transcript> {
               buildFieldWidgets('Points', data?['points']),
               buildFieldWidgets('Type', data?['type']),
 
+
             ],
           ),
         ),
@@ -126,14 +127,26 @@ class _TranscriptState extends State<Transcript> {
     );
   }
 
-  Widget buildFieldWidgets(String fieldName, List<dynamic>? fieldData) {
-    List<Widget> fieldWidgets = [];
+  Widget buildFieldWidgets(String fieldName, dynamic fieldData) {
+    if (fieldData is List<dynamic>) {
+      List<Widget> fieldWidgets = [];
 
-    if (fieldData != null && fieldData.isNotEmpty) {
-      for (int i = 0; i < fieldData.length; i++) {
+      if (fieldData.isNotEmpty) {
+        for (int i = 0; i < fieldData.length; i++) {
+          fieldWidgets.add(
+            Text(
+              '$fieldName ${i + 1}: ${fieldData[i]}',
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          );
+        }
+      } else {
         fieldWidgets.add(
           Text(
-            '$fieldName ${i + 1}: ${fieldData[i]}',
+            'No $fieldName available',
             style: TextStyle(
               fontSize: 12.5,
               fontWeight: FontWeight.w500,
@@ -141,34 +154,35 @@ class _TranscriptState extends State<Transcript> {
           ),
         );
       }
-    } else {
-      fieldWidgets.add(
-        Text(
-          'No $fieldName available',
-          style: TextStyle(
-            fontSize: 12.5,
-            fontWeight: FontWeight.w500,
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$fieldName:',
+            style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+          SizedBox(height: 4),
+          ...fieldWidgets,
+          SizedBox(height: 8),
+        ],
+      );
+    } else if (fieldData is String) {
+      return Text(
+        '$fieldName: $fieldData',
+        style: TextStyle(
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
         ),
       );
+    } else {
+      return Text('Invalid data type for $fieldName');
     }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$fieldName:',
-          style: TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 4),
-        ...fieldWidgets,
-        SizedBox(height: 8),
-      ],
-    );
   }
+
 }
 
 
