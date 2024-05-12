@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-       home: const TransitionPage(),
-      //home: MenupageWidget(),
+       //home: const TransitionPage(),
+        home: attpageWidget (rn: "pass some roll number here in the format 21L7725")
     );
   }
 }
