@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
        //home: const TransitionPage(),
-        home: attpageWidget (rn: "pass some roll number here in the format 21L7725")
+        home: attpageWidget (rn: "21L5378")
     );
   }
 }
