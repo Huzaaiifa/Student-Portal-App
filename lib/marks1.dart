@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class MarkspageWidget extends StatefulWidget {
+class  MarkspageWidget extends StatefulWidget {
   final String rn;
 
   MarkspageWidget({required this.rn});
@@ -155,7 +155,7 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
           ),
           Positioned(
             top: 129,
-            left: 113,
+            left: 130,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
@@ -218,7 +218,7 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
             ),
           ),
           Positioned(
-            top: 470,
+            top: 475,
             left: 66,
             child: Text(
               'Assignments',
@@ -280,10 +280,10 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
             ),
           ),
           Positioned(
-            top: 535,
+            top: 540,
             left: 66,
             child: Text(
-              'Grand Total Marks',
+              'Grand Total',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(255, 255, 255, 1),
@@ -428,7 +428,7 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
             ),
           ),
           Positioned(
-            top: 220,
+            top: 224,
             left: 54,
             child: Text(
               'Quizzes:',
@@ -595,10 +595,10 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
             ),
           ),
           Positioned(
-            top: 267,
+            top: 272,
             left: 161,
             child: Text(
-              'Obtained marks',
+              'Obtained',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(0, 0, 0, 1),
@@ -630,7 +630,7 @@ class _MarkspageWidgetState extends State<MarkspageWidget> {
             top: 273,
             left: 287,
             child: Text(
-              'Aver',
+              'Avg',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color.fromRGBO(0, 0, 0, 1),
