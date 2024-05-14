@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< Updated upstream
 import 'package:iftikhars_project/second_page.dart';
 import 'main.dart';
 import 'auth functons/signUP_IN.dart';
@@ -15,20 +16,34 @@ String convertToUpperCase(String input, int n) {
 
 class FirstPageIP extends StatefulWidget {
   const FirstPageIP({super.key});
+=======
+import 'package:iftikhars_project/auth functons/signUP_IN.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+>>>>>>> Stashed changes
 
   @override
-  State<FirstPageIP> createState() => _FirstPageIPState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
+<<<<<<< Updated upstream
 class _FirstPageIPState extends State<FirstPageIP> {
   final _formkey = GlobalKey<FormState>();
   String roll_nm = ' ';
   String password = ' ';
   String rn = ' ';
+=======
+class _LoginPageState extends State<LoginPage> {
+  final rollNumberController = TextEditingController();
+  final passwordController = TextEditingController();
+
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFE7EBD0),
+<<<<<<< Updated upstream
       body: Form(
         key: _formkey,
         child: Center(
@@ -210,6 +225,91 @@ class _FirstPageIPState extends State<FirstPageIP> {
               ],
             ),
           ),
+=======
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    TextField(
+                      controller: rollNumberController,
+                      decoration: InputDecoration(
+                        hintText: 'Roll Number i.e (L215378)',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16.0),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 24.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Handle login button press
+                        String email =
+                            rollNumberController.toString() + "@gmail.com";
+                        signIn(email, passwordController.toString());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFE1F197),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 32.0, vertical: 16.0),
+                      ),
+                      child: Text(
+                        'Log In',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 16.0),
+            // Add the image here
+          ],
+>>>>>>> Stashed changes
         ),
       ),
     );

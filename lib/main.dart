@@ -70,12 +70,17 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               },
+<<<<<<< Updated upstream
               child: const Text('arghhh off we go to the 3rd page vroom')),
+=======
+              child: const Text('arghhh off we go to the 3rd page')),
+>>>>>>> Stashed changes
           ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
+<<<<<<< Updated upstream
                     builder: (context) => const MarksPage(),
                   ),
                 );
@@ -87,6 +92,9 @@ class HomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const FirstPageIP(),
+=======
+                    builder: (context) => LoginPage(),
+>>>>>>> Stashed changes
                   ),
                 );
               },
@@ -122,6 +130,7 @@ class MarksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return Marks(
       rollNumber: '21L5378',
     );
@@ -134,5 +143,8 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const FirstPageIP();
+=======
+    return LoginPage();
+>>>>>>> Stashed changes
   }
 }
