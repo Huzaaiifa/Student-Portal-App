@@ -47,7 +47,7 @@ class trspageWidgetState extends State<trspageWidget> {
           )
       ),Positioned(
         top: 205,
-        left: 73,
+        left: 76,
         child: Text('CGPA: 3.99', textAlign: TextAlign.left, style: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontFamily: 'Jost',
@@ -58,7 +58,7 @@ class trspageWidgetState extends State<trspageWidget> {
         ),)
     ),Positioned(
         top: 205,
-        left: 150,
+        left: 170,
         child: Text('SGPA: 1.20', textAlign: TextAlign.right, style: TextStyle(
             color: Color.fromRGBO(255, 255, 255, 1),
             fontFamily: 'Jost',
@@ -133,7 +133,7 @@ class trspageWidgetState extends State<trspageWidget> {
         )
     ),Positioned(
         top: 149,
-        left: 106,
+        left: 130,
         child: Container(
           decoration: BoxDecoration(
             borderRadius : BorderRadius.only(
@@ -455,9 +455,9 @@ class trspageWidgetState extends State<trspageWidget> {
             height: 1
         ),)
     ),Positioned(
-        top: 297,
+        top: 303,
         left: 97,
-        child: Text('Course Name', textAlign: TextAlign.center, style: TextStyle(
+        child: Text('Course', textAlign: TextAlign.center, style: TextStyle(
             color: Color.fromRGBO(0, 0, 0, 1),
         fontFamily: 'Jost',
         fontSize: 11.5,
@@ -466,8 +466,8 @@ class trspageWidgetState extends State<trspageWidget> {
         height: 1
     ),)
     ),Positioned(
-    top: 306,
-    left: 140,
+    top: 302,
+    left: 144,
     child: Text('Section', textAlign: TextAlign.center, style: TextStyle(
     color: Color.fromRGBO(0, 0, 0, 1),
     fontFamily: 'Jost',
@@ -477,8 +477,8 @@ class trspageWidgetState extends State<trspageWidget> {
     height: 1.2173913043478262
     ),)
     ),Positioned(
-    top: 305,
-    left: 207,
+    top: 303,
+    left: 195,
     child: Text('Grade', textAlign: TextAlign.left, style: TextStyle(
     color: Color.fromRGBO(0, 0, 0, 1),
     fontFamily: 'Jost',
@@ -488,8 +488,8 @@ class trspageWidgetState extends State<trspageWidget> {
     height: 1
     ),)
     ),Positioned(
-    top: 300,
-    left: 284,
+    top: 303,
+    left: 265,
     child: Text('Cr.Hrs', textAlign: TextAlign.left, style: TextStyle(
     color: Color.fromRGBO(0, 0, 0, 1),
     fontFamily: 'Jost',
@@ -499,8 +499,8 @@ class trspageWidgetState extends State<trspageWidget> {
     height: 1
     ),)
     ),Positioned(
-    top: 305,
-    left: 251,
+    top: 303,
+    left: 237,
     child: Text('Pts.', textAlign: TextAlign.left, style: TextStyle(
     color: Color.fromRGBO(0, 0, 0, 1),
     fontFamily: 'Jost',

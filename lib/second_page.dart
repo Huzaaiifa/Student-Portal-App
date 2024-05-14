@@ -115,7 +115,7 @@ class _SecondPageState extends State<SecondPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                'Relationship Status: ${userData?['relationshipstatus'] ?? 'No Blood Group'}',
+                                'Rollnum: $rollNm',
                                 style: TextStyle(
                                     fontSize: 12.5,
                                     fontWeight: FontWeight.w500),
@@ -176,7 +176,7 @@ class _SecondPageState extends State<SecondPage> {
                                 child: customExpandableTile(
                                   title: 'Personal Information',
                                   content: Text(
-                                    'Personal Information content goes here...',
+                                    '${userData?['personal information'] ?? 'No Personal Information'}',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.black.withOpacity(1.0),
@@ -194,7 +194,7 @@ class _SecondPageState extends State<SecondPage> {
                                 child: customExpandableTile(
                                   title: 'Contact Information',
                                   content: Text(
-                                    'Contact Information content goes here...',
+                                    '${userData?['contact'] ?? 'No contact Information'}',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.black.withOpacity(1.0),
@@ -210,7 +210,7 @@ class _SecondPageState extends State<SecondPage> {
                                 child: customExpandableTile(
                                   title: 'Family Information',
                                   content: Text(
-                                    'Family Information content goes here...',
+                                    '${userData?['fam'] ?? 'No family Information'}',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.black.withOpacity(1.0),
@@ -226,7 +226,7 @@ class _SecondPageState extends State<SecondPage> {
                                 child: customExpandableTile(
                                   title: 'Academic Calender',
                                   content: Text(
-                                    'Academic Calender content goes here...',
+                                    '${userData?['acal'] ?? 'No Information'}',
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.black.withOpacity(1.0),
