@@ -84,7 +84,7 @@ class MenupageWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                      builder: (context) => attpageWidget(rn: rn)));
+                      builder: (context) => attpageWidget(rollNumber: rn)));
                 },
                 child: Text(
                   'Attendance',
