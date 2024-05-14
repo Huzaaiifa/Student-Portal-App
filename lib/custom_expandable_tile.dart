@@ -1,4 +1,4 @@
-import 'package:intl/intl.dart'; // Remove 'dart:js' if not needed
+//import 'package:intl/intl.dart'; // Remove 'dart:js' if not needed
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
@@ -24,8 +24,6 @@ class customExpandableTile extends StatefulWidget {
 }
 
 class customExpandableTileState extends State<customExpandableTile> {
-  final Color _startColor = Colors.white; // Initial color (collapsed)
-  final Color _endColor = Color(0xFFDAE5A2);
   bool _isExpanded = false;
 
   void toggleExpansion() {
@@ -56,7 +54,8 @@ class customExpandableTileState extends State<customExpandableTile> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 widget.title,
@@ -66,30 +65,29 @@ class customExpandableTileState extends State<customExpandableTile> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Spacer(),
-              Row(
-                // Use Row for icon and content (optional)
-                children: [
-                  Icon(
-                    _isExpanded
-                        ? Icons.arrow_circle_down
-                        : Icons.arrow_circle_right_outlined,
-                    color: _isExpanded
-                        ? Colors.black
-                        : Colors.white, // Ternary operator for icon
-                  ),
-                  if (_isExpanded) // Conditional widget for content
-                    Text(
-                        widget.title,
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                  if (!_isExpanded) // Conditional rendering of the content
-                    widget.content,
-                ],
-              ),
+
+              if (_isExpanded) // Render content only when expanded
+                widget.content,
+
+              // Icon(
+              //   _isExpanded
+              //       ? Icons.arrow_circle_down
+              //       : Icons.arrow_circle_right_outlined,
+              //   color: _isExpanded
+              //       ? Colors.transparent
+              //       : Colors.white, // Ternary operator for icon
+              // ),
+
+              // Text(
+              //   widget.title,
+              //   style: TextStyle(
+              //     fontSize: 14.0,
+              //     color: Colors.white,
+              //     fontWeight: FontWeight.w600,
+              //   ),
+              // ),
+              // if (!_isExpanded) // Conditional rendering of the content
+              //   widget.content,
             ],
           ),
         ),

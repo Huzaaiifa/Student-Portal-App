@@ -1,4 +1,4 @@
-import 'dart:js';
+// import 'dart:js';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,8 @@ class _SecondPageState extends State<SecondPage> {
               Navigator.push(
                   build,
                   MaterialPageRoute(
-                      builder: (context) => MenupageWidget(rn: rollNm)));;
+                      builder: (context) => MenupageWidget(rn: rollNm)));
+              ;
             },
           ),
         ),
@@ -168,27 +169,19 @@ class _SecondPageState extends State<SecondPage> {
                         ),
                         child: SingleChildScrollView(
                           // Wrap the Column with SingleChildScrollView
-                         child: Column(
+                          child: Column(
                             children: [
                               SizedBox(height: 33),
                               IntrinsicHeight(
                                 child: customExpandableTile(
                                   title: 'Personal Information',
-                                  content://Expanded(
-                                                 Container(
-                                                  width: 200,
-                                                        child: Text(
-                                                       '${userData?['personal information'] ?? 'No Personal Information'}',
-                                                           style: TextStyle(
-                                                              fontSize: 14,
-                                                          color: Colors.black.withOpacity(1.0),
-                                                        ),
-                                                       softWrap: true,
-                                                        textAlign: TextAlign.justify,
-                                                      ),
-                                                  ),
-                                              //     ),
-
+                                  content: Text(
+                                    'Personal Information content goes here...',
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.black.withOpacity(1.0),
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                   color: Color(0xFF30312C),
                                   shadowColor: Colors.black.withOpacity(0.25),
                                   shadowOffset: Offset(0, 4),
