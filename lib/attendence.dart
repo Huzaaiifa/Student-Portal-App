@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:iftikhars_project/temp1.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
 import 'dart:math' as math;
@@ -10,11 +11,13 @@ import 'firebase_options.dart';
 
 class attpageWidget extends StatelessWidget {
   final String rollNumber;
+  final String con;
   final DocumentReference userDocRef;
   final CollectionReference attendanceCollectionRef;
+
   final DocumentReference mathattendanceDocRef;
 
-  attpageWidget({required this.rollNumber})
+  attpageWidget({required this.rollNumber, required this.con})
   :
        userDocRef = FirebaseFirestore.instance.collection('users').doc(rollNumber),
   attendanceCollectionRef = FirebaseFirestore.instance.collection('users').doc(rollNumber).collection('attendence'),
@@ -23,12 +26,42 @@ class attpageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    TextEditingController _queryController = TextEditingController();
     // Figma Flutter Generator MarkspageWidget - FRAME
     return Material(
         child: Scaffold(
-            appBar: AppBar(
-              title: Text('Menu Page'),
+            appBar: PreferredSize(
+            preferredSize: Size.fromHeight(65),
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        title: Padding(
+          padding: EdgeInsets.only(left: 12),
+          child: Text(
+            'Attendence',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+              fontSize: 30,
             ),
+          ),
+        ),
+        backgroundColor: Colors.black,
+        leading: IconButton(
+          icon: Icon(
+            Icons.reorder,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MenupageWidget(rn: rollNumber)));
+
+          },
+        ),
+      ),
+    ),
             body: Builder(
               builder: (context) => Center(
                 child: FutureBuilder<DocumentSnapshot>(
@@ -43,8 +76,8 @@ class attpageWidget extends StatelessWidget {
                 Map<String, dynamic>? userData =
                 userSnapshot.data!.data() as Map<String, dynamic>?;
                 return Container(
-                    width: 360,
-                    height: 640,
+                    // width: 360,
+                    // height: 640,
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(231, 235, 208, 1),
                     ),
@@ -54,7 +87,7 @@ class attpageWidget extends StatelessWidget {
                           left: 88,
                           child: Container(
                               width: 183,
-                              height: 27,
+                              height: 27,  //subj name
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(25),
@@ -85,30 +118,30 @@ class attpageWidget extends StatelessWidget {
                                 ),
                                 color: Color.fromRGBO(215, 219, 195, 1),
                               ))),
-                      Positioned(
-                          top: 0,
-                          left: 0,
-                          child: Container(
-                              width: 360,
-                              height: 117,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(0, 0, 0, 1),
-                              ))),
-                      Positioned(
-                          top: 44,
-                          left: 116,
-                          child: Text(
-                            'Attendance',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                fontFamily: 'Jost',
-                                fontSize: 24,
-                                letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1),
-                          )),
+                      // Positioned(
+                      //     top: 0,
+                      //     left: 0,
+                      //     child: Container(
+                      //         width: 360,
+                      //         height: 117,
+                      //         decoration: BoxDecoration(
+                      //           color: Color.fromRGBO(0, 0, 0, 1),
+                      //         ))),
+                      // Positioned(
+                      //     top: 44,
+                      //     left: 116,
+                      //     child: Text(
+                      //       'Attendance',
+                      //       textAlign: TextAlign.left,
+                      //       style: TextStyle(
+                      //           color: Color.fromRGBO(255, 255, 255, 1),
+                      //           fontFamily: 'Jost',
+                      //           fontSize: 24,
+                      //           letterSpacing:
+                      //               0 /*percentages not used in flutter. defaulting to zero*/,
+                      //           fontWeight: FontWeight.normal,
+                      //           height: 1),
+                      //     )),
                       Positioned(
                           top: 54,
                           left: 21,
@@ -485,46 +518,7 @@ class attpageWidget extends StatelessWidget {
                                 ],
                               ),
 
-                              // Column(
-                              //   children: [
-                              //     for (var lectureDuration in userData?['lectureduration'] ?? ['no lecture duration'])
-                              //       Text(
-                              //         '$lectureDuration',
-                              //         style: TextStyle(
-                              //           fontSize: 12.5,
-                              //           fontWeight: FontWeight.w500,
-                              //         ),
-                              //       ),
-                              //   ],
-                              // ),
-                              //
-                              // // Text(
-                              // //     ' ${userData?['lectureduration'] ?? 'no lecture duration'}',
-                              // //   style: TextStyle(
-                              // //       fontSize: 12.5,
-                              // //       fontWeight: FontWeight.w500),
-                              // // ),
-                              // SizedBox(height: 4),
-                              // Text(
-                              //   ' ${userData?['present'] ?? 'no lecture duration'}',
-                              //   style: TextStyle(
-                              //       fontSize: 12.5,
-                              //       fontWeight: FontWeight.w500),
-                              // ),
-                              // SizedBox(height: 4),
-                              // Text(
-                              //   ' ${userData?['ln'] ?? 'no lecture duration'}',
-                              //   style: TextStyle(
-                              //       fontSize: 12.5,
-                              //       fontWeight: FontWeight.w500),
-                              // ),
-                              // SizedBox(height: 4),
-                              // Text(
-                              //   'DOB: ',
-                              //   style: TextStyle(
-                              //       fontSize: 12.5,
-                              //       fontWeight: FontWeight.w500),
-                              // ),
+
                             ],
                           ),
                         ),
@@ -660,21 +654,57 @@ class attpageWidget extends StatelessWidget {
                                 fontWeight: FontWeight.normal,
                                 height: 1),
                           )),
+
+
+
                       Positioned(
-                          top: 590,
-                          left: 132,
+                        top: 590,
+                        left: 132,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Add your logic to show the popup here
+                            // For example:
+                            showDialog(
+                              context: context, // Replace 'context' with your BuildContext variable
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text("Query"),
+                                  content: TextField(
+                                  controller: _queryController,
+                                  decoration: InputDecoration(
+                                    hintText: "Enter your query here",
+                                  ),
+                                ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("Cancel"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        String query = _queryController.text;
+                                        if (query.isNotEmpty) {
+                                          _saveQueryToFirestore(query);
+                                          _queryController.clear();
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                      child: Text("Save"),
+                                    ),
+
+                                  ],
+                                );
+                              },
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(25),
-                                topRight: Radius.circular(25),
-                                bottomLeft: Radius.circular(25),
-                                bottomRight: Radius.circular(25),
-                              ),
+                              borderRadius: BorderRadius.circular(25),
                               color: Color.fromRGBO(0, 0, 0, 1),
                             ),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 37, vertical: 2),
+                            padding: EdgeInsets.symmetric(horizontal: 37, vertical: 2),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
@@ -682,16 +712,20 @@ class attpageWidget extends StatelessWidget {
                                   'Raise Query',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      color: Color.fromRGBO(255, 255, 255, 1),
-                                      fontFamily: 'Jost',
-                                      fontSize: 11,
-                                      letterSpacing: 0.25,
-                                      fontWeight: FontWeight.normal,
-                                      height: 1.8181818181818181),
+                                    color: Color.fromRGBO(255, 255, 255, 1),
+                                    fontFamily: 'Jost',
+                                    fontSize: 11,
+                                    letterSpacing: 0.25,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.8181818181818181,
+                                  ),
                                 ),
                               ],
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
+
                       Positioned(
                           top: 232,
                           left: 30,
@@ -715,4 +749,70 @@ class attpageWidget extends StatelessWidget {
               ),
             )));
   }
+
+
+
+
+  Future<void> _saveQueryToFirestore(String query) async {
+    // Get a Firestore instance
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    // Reference to the Firestore document named "q1" in the "queries" collection
+
+
+    // Update the document to add the query to the array field
+    firestore.runTransaction((transaction) async {
+      // Get the current snapshot of the document
+      DocumentSnapshot snapshot = await transaction.get(mathattendanceDocRef);
+
+      // Get the current array field value (or create an empty array if it doesn't exist)
+      List<dynamic> currentQueries = snapshot.exists
+          ? (snapshot.data() != null ? (snapshot.data()! as Map<String, dynamic>)['qr'] ?? [] : [])
+          : ['no lecture duration'];
+
+
+      // Add the new query to the array
+      currentQueries.add(query);
+      String cn = 'Math';
+      // Update the document with the new array value
+      transaction.update(mathattendanceDocRef, {'qr': currentQueries});
+
+      await mathattendanceDocRef.update({'qs': FieldValue.arrayUnion(['new'])});
+
+      DocumentSnapshot courseDoc = await mathattendanceDocRef.get();
+      Map<String, dynamic>? courseDocData = courseDoc.data() as Map<String, dynamic>?;
+      String teacherId = courseDocData?['teacher'] ?? '';
+
+      DocumentSnapshot teacherDoc = await firestore.collection('users').doc(teacherId).get();
+      if (teacherDoc.exists) {
+        Map<String, dynamic>? tDocData = teacherDoc.data() as Map<String, dynamic>?;
+        String teacherName = tDocData?['name'] ?? '';
+        // Assuming teacher's name is stored in 'name' field
+
+        // Send notification to teacher
+        String notificationMessage = 'New query from student $rollNumber in course $cn';
+
+        await firestore.collection('users').doc(teacherId).collection('notifications').add({
+          'message': 'New query from student $rollNumber in course $cn',
+          'timestamp': FieldValue.serverTimestamp(), 'fromp': '$rollNumber', 'on': '$cn','description': '$query'
+        });
+
+
+      }
+
+
+    }).then((value) {
+      // Successfully updated document
+      print('Query saved successfully: $query');
+    }).catchError((error) {
+      // Failed to update document
+      print('Failed to save query: $error');
+    });
+
+
+
+  }
+  
 }
+
+

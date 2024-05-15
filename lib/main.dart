@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:iftikhars_project/stcourses.dart';
+import 'package:iftikhars_project/thome.dart';
 import 'TransitionPage.dart';
 import 'firebase_options.dart';
+import 'mtcourses.dart';
 import 'temp1.dart';
 import 'marks1.dart';
 import 'attendence.dart';
@@ -12,7 +15,9 @@ import 'Transcript.dart';
 import 'transcript1.dart';
 import 'package:iftikhars_project/Marks.dart';
 
-void main() async {
+void main() async
+{
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -28,12 +33,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-
-      //home: (rn: "21L7725"),
-      //home: MenupageWidget(),
-
-      home: const TransitionPage(),
-      // home: attpageWidget (rn: "21L5378")
+       //home: const TransitionPage(),
+        home: thome (rn: "t1")
     );
   }
 }
@@ -48,59 +49,48 @@ class HomePage extends StatelessWidget {
         title: const Text('Home Page'),
       ),
       body: Center(
-          child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: () {
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Second(),
+                  ),
+                );
+              },
+              child: const Text('Go to Second Page'),
+            ),
+            ElevatedButton(onPressed: (){
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Second(),
-                ),
+                context, MaterialPageRoute(builder: (context) => const ThirdPage(),
+              ),
               );
             },
-            child: const Text('Go to Second Page'),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ThirdPage(),
-                  ),
-                );
-              },
-<<<<<<< Updated upstream
-              child: const Text('arghhh off we go to the 3rd page vroom')),
-=======
-              child: const Text('arghhh off we go to the 3rd page')),
->>>>>>> Stashed changes
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-<<<<<<< Updated upstream
-                    builder: (context) => const MarksPage(),
-                  ),
-                );
-              },
-              child: const Text('Marks Page')),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const FirstPageIP(),
-=======
-                    builder: (context) => LoginPage(),
->>>>>>> Stashed changes
-                  ),
-                );
-              },
-              child: const Text('Login Page'))
-        ],
-      )),
+                child: const Text('arghhh off we go to the 3rd page vroom')
+            ),
+
+            ElevatedButton(onPressed: (){
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const MarksPage(),
+              ),
+              );
+            },
+                child: const Text('Marks Page')
+            ),
+
+            ElevatedButton(onPressed: (){
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) =>  const FirstPageIP(),
+              ),
+              );
+            },
+                child: const Text('Login Page')
+            )
+          ],
+        )
+      ),
     );
   }
 }
@@ -110,9 +100,7 @@ class Second extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SecondPage(
-      rn: '21L-7715',
-    );
+    return  SecondPage(rn: '21L-7715',);
   }
 }
 
@@ -130,12 +118,10 @@ class MarksPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
-    return Marks(
-      rollNumber: '21L5378',
-    );
+    return  Marks(rollNumber: '21L5378',);
   }
 }
+
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -143,8 +129,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const FirstPageIP();
-=======
-    return LoginPage();
->>>>>>> Stashed changes
   }
 }
+
+

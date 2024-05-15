@@ -2,6 +2,7 @@
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'MenutpageWidget.dart';
 import 'custom_expandable_tile.dart';
 import 'temp1.dart';
 
@@ -9,24 +10,24 @@ String userName = "random";
 String RollNo = "76L9051";
 String DOB = "12/04/1878";
 
-class SecondPage extends StatefulWidget {
+class thome extends StatefulWidget {
   final String rn;
 
-  SecondPage({required this.rn});
+  thome({required this.rn});
 
   @override
-  _SecondPageState createState() => _SecondPageState();
+  _thome createState() => _thome();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _thome extends State<thome> {
   final CollectionReference collectionRef =
-     FirebaseFirestore.instance.collection('users');
- // FirebaseFirestore.instance.collection('c1');
+  FirebaseFirestore.instance.collection('users');
+
   late List<bool> _isOpen = List.filled(4, false);
 
   @override
   Widget build(BuildContext build) {
-    String rollNm = widget.rn.substring(0, 7);
+    String rollNm = widget.rn.substring(0, 2);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
@@ -35,7 +36,7 @@ class _SecondPageState extends State<SecondPage> {
           title: Padding(
             padding: EdgeInsets.only(left: 12),
             child: Text(
-              'Flex Student Portal',
+              'Flex Teacher Portal',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w900,
@@ -53,7 +54,7 @@ class _SecondPageState extends State<SecondPage> {
               Navigator.push(
                   build,
                   MaterialPageRoute(
-                      builder: (context) => MenupageWidget(rn: rollNm)));
+                      builder: (context) => MenutpageWidget(rn: rollNm)));
               ;
             },
           ),
@@ -71,7 +72,7 @@ class _SecondPageState extends State<SecondPage> {
                 );
               } else {
                 Map<String, dynamic>? userData =
-                    userSnapshot.data!.data() as Map<String, dynamic>?;
+                userSnapshot.data!.data() as Map<String, dynamic>?;
                 return Stack(
                   children: [
                     Positioned(
@@ -115,18 +116,12 @@ class _SecondPageState extends State<SecondPage> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                'Rollnum: $rollNm',
+                                'Designation: ${userData?['designation'] ?? 'No CNIC'}',
                                 style: TextStyle(
                                     fontSize: 12.5,
                                     fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(height: 4),
-                              Text(
-                                'CNIC: ${userData?['CNIC'] ?? 'No CNIC'}',
-                                style: TextStyle(
-                                    fontSize: 12.5,
-                                    fontWeight: FontWeight.w500),
-                              ),
+
                               SizedBox(height: 4),
                               Text(
                                 'Email: ${userData?['email'] ?? 'No Email'}',
@@ -174,70 +169,81 @@ class _SecondPageState extends State<SecondPage> {
                               SizedBox(height: 33),
                               IntrinsicHeight(
                                 child: customExpandableTile(
-                                  title: 'Personal Information',
-                                  content: Text(
-                                    '${userData?['personal information'] ?? 'No Personal Information'}',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black.withOpacity(1.0),
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  color: Color(0xFF30312C),
-                                  shadowColor: Colors.black.withOpacity(0.25),
-                                  shadowOffset: Offset(0, 4),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              // Add spacing between tiles
+                                  title: 'Pending Tasks/Queries',
+                                  content: FutureBuilder<QuerySnapshot>(
+                                    future: collectionRef.doc(rollNm).collection('notifications').get(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.connectionState == ConnectionState.waiting) {
+                                        return CircularProgressIndicator(); // Show loading indicator while fetching data
+                                      }
+                                      if (snapshot.hasError) {
+                                        return Text('Error: ${snapshot.error}');
+                                      }
+                                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                                        return Text('No notifications data available');
+                                      }
 
-                              IntrinsicHeight(
-                                child: customExpandableTile(
-                                  title: 'Contact Information',
-                                  content: Text(
-                                    '${userData?['contact'] ?? 'No contact Information'}',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black.withOpacity(1.0),
-                                        fontWeight: FontWeight.w600),
+                                      // Once the data is available
+                                      List<QueryDocumentSnapshot> quizDocs = snapshot.data!.docs;
+
+                                      // Display quiz information
+                                      return Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          // Column titles
+
+                                          SizedBox(height: 10),
+                                          // Quiz entries
+                                          ...quizDocs.asMap().entries.map((entry) {
+                                            int index = entry.key + 1; // Quiz index
+                                            QueryDocumentSnapshot quizDoc = entry.value;
+                                            String quizTitle = 'Notification $index'; // Label each entry as Quiz 1, Quiz 2, etc.
+                                            String quizObtained = quizDoc['message']?.toString() ?? 'N/A';
+                                            String quizTotal = quizDoc['description']?.toString() ?? 'N/A';
+
+
+                                            return Row(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  '$quizTitle:',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 20),
+                                                Text(
+                                                  '$quizObtained',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                  ),
+                                                ),
+                                                SizedBox(width: 20),
+                                                Text(
+                                                  '$quizTotal',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                  ),
+                                                ),
+
+
+                                              ],
+                                            );
+                                          }).toList(),
+                                        ],
+                                      );
+                                    },
                                   ),
                                   color: Color(0xFF30312C),
                                   shadowColor: Colors.black.withOpacity(0.25),
                                   shadowOffset: Offset(0, 4),
                                 ),
+
                               ),
                               SizedBox(height: 20),
-                              IntrinsicHeight(
-                                child: customExpandableTile(
-                                  title: 'Family Information',
-                                  content: Text(
-                                    '${userData?['fam'] ?? 'No family Information'}',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black.withOpacity(1.0),
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  color: Color(0xFF30312C),
-                                  shadowColor: Colors.black.withOpacity(0.25),
-                                  shadowOffset: Offset(0, 4),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              IntrinsicHeight(
-                                child: customExpandableTile(
-                                  title: 'Academic Calender',
-                                  content: Text(
-                                    '${userData?['acal'] ?? 'No Information'}',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black.withOpacity(1.0),
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  color: Color(0xFF30312C),
-                                  shadowColor: Colors.black.withOpacity(0.25),
-                                  shadowOffset: Offset(0, 4),
-                                ),
-                              ),
-                              SizedBox(height: 20)
 
                             ],
                           ),

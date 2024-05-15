@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:iftikhars_project/TransitionPage.dart';
 import 'package:iftikhars_project/attendence.dart';
+import 'package:iftikhars_project/markc.dart';
 import 'package:iftikhars_project/marks1.dart';
 import 'package:iftikhars_project/mtcourses.dart';
 import 'package:iftikhars_project/second_page.dart';
 import 'package:iftikhars_project/stcourses.dart';
+import 'package:iftikhars_project/teachcourses.dart';
+import 'package:iftikhars_project/thome.dart';
 import 'package:iftikhars_project/transcript1.dart';
 
-class MenupageWidget extends StatelessWidget {
+class MenutpageWidget extends StatelessWidget {
   final String rn;
 
-  MenupageWidget({required this.rn});
+  MenutpageWidget({required this.rn});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,7 @@ class MenupageWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SecondPage(rn: rn)));
+                          builder: (context) => thome(rn: rn)));
                   // Action when Home button is pressed
                 },
                 child: Text(
@@ -75,7 +78,7 @@ class MenupageWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => stcourses(rn: rn)));
+                          builder: (context) => teachcourses(rn: rn)));
                   // Action when Course Registration button is pressed
                 },
                 child: Text(
@@ -102,7 +105,7 @@ class MenupageWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                      builder: (context) => stcourses(rn: rn)));
+                          builder: (context) => teachcourses(rn: rn)));
                 },
                 child: Text(
                   'Attendance',
@@ -128,7 +131,7 @@ class MenupageWidget extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => mtcourses(rn: rn)));
+                          builder: (context) => markcourses(rn: rn)));
                   // Action when Marks button is pressed
                 },
                 child: Text(
@@ -149,114 +152,7 @@ class MenupageWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => trspageWidget(rollNumber: rn)));
-                  // Action when Transcript button is pressed
-                },
-                child: Text(
-                  'Transcript',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SecondPage(rn: rn)));
-                  // Action when Fee Challan button is pressed
-                },
-                child: Text(
-                  'Fee Challan',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SecondPage(rn: rn)));
-                  // Action when Course Feedback button is pressed
-                },
-                child: Text(
-                  'Course Feedback',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => trspageWidget(rollNumber: rn)));
-                  // Action when Course Withdraw button is pressed
-                },
-                child: Text(
-                  'Grade Change Request',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
+
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {

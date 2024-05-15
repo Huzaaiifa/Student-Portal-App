@@ -9,23 +9,23 @@ String userName = "random";
 String RollNo = "76L9051";
 String DOB = "12/04/1878";
 
-class MarkspageWidget extends StatefulWidget {
+class addmarkpageWidget extends StatefulWidget {
 
   final String rn;
   final String con;
 
-  MarkspageWidget({required this.rn, required this.con});
+  addmarkpageWidget({required this.rn, required this.con});
 
   @override
-  _MarkspageWidget createState() => _MarkspageWidget();
+  _addmarkpageWidget createState() => _addmarkpageWidget();
 }
 
-class _MarkspageWidget extends State<MarkspageWidget> {
+class _addmarkpageWidget extends State<addmarkpageWidget> {
   String ron = '21L5378';
 
   final userDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378');
   final  attendanceCollectionRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('attendence');
-      final mathmarksDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('marks').doc('Math');
+  final mathmarksDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('marks').doc('Math');
   final mqDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('marks').doc('Math').collection('quizes');
   final msDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('marks').doc('Math').collection('sessional');
   final maDocRef = FirebaseFirestore.instance.collection('users').doc('21L5378').collection('marks').doc('Math').collection('ass');
@@ -143,7 +143,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                   );
                                 },
                               ),
-                               GestureDetector(
+                              GestureDetector(
                                 onTap: () {
                                   // Add your logic to show the popup here
                                   // For example:
@@ -741,7 +741,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
           ? (snapshot.data() != null ? (snapshot.data()! as Map<String, dynamic>)['qr'] ?? [] : [])
           : ['no lecture duration'];
 
-String rollNumber = '21L5378';
+      String rollNumber = '21L5378';
       // Add the new query to the array
       currentQueries.add(query);
       String cn = 'Math';

@@ -25,7 +25,15 @@ Future<int> signIn(String email, String password) async {
       email: email,
       password: password,
     );
-
+    if (email.contains('L')) {
+      return 1; // Return 'student' for student users
+    } else if (email.contains('t')) {
+      return 2; // Return 'teacher' for teacher users
+    } else if (email == 'admin@gmail.com') {
+      return 0; // Return 'admin' for admin users
+    } else {
+      return -1; // Return 'unknown' for other users
+    }
     print("Successful sign-in");
     return 1; // Return 1 for successful login
   } on FirebaseAuthException catch (e) {
