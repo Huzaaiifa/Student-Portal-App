@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:iftikhars_project/second_page.dart';
 import 'package:iftikhars_project/thome.dart';
@@ -82,7 +84,8 @@ class _FirstPageIPState extends State<FirstPageIP> {
                     value = value.toString();
                     value = value.toUpperCase();
 
-                    if((value != null) && (value.toString().contains('L') == false)){
+                    log(value);
+                    if(((value != null) && (value.toString().contains('L') == false)) && ((value != null) && (value.toString().contains('T') == false))){
                       return 'Incorrect Roll Number format.';
                     }
                     return null;
@@ -91,10 +94,12 @@ class _FirstPageIPState extends State<FirstPageIP> {
                     setState(() {
                       if(value == null){return;}
                       String input = value.toString();
+                      log(input);
                       int n = 'XXLXXXX'.length;
-                      String upperCasePart = convertToUpperCase(input.substring(0, n), n);
+                      //String upperCasePart = convertToUpperCase(input.substring(0, n), n);
 
-                      roll_nm = "$upperCasePart@gmail.com";
+//                      roll_nm = "$upperCasePart@gmail.com";
+                    roll_nm = "$input@gmail.com";
                     });
                   },
                 ),
@@ -151,6 +156,7 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   if(_formkey.currentState!.validate()){
                     _formkey.currentState!.save();
                   }
+                  log(roll_nm);
 
                   int result = await signIn(roll_nm, password);
                   if(result == 1) {
