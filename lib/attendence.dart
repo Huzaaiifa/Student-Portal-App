@@ -36,7 +36,7 @@ class attpageWidget extends StatelessWidget {
       child: AppBar(
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsets.only(left: 12),
+          padding: EdgeInsets.only(left: 30),
           child: Text(
             'Attendence',
             style: TextStyle(
@@ -83,7 +83,7 @@ class attpageWidget extends StatelessWidget {
                     ),
                     child: Stack(children: <Widget>[
                       Positioned(
-                          top: 171,
+                          top: 120,
                           left: 88,
                           child: Container(
                               width: 183,
@@ -104,7 +104,7 @@ class attpageWidget extends StatelessWidget {
                                 color: Color.fromRGBO(48, 49, 44, 1),
                               ))),
                       Positioned(
-                          top: 232,
+                          top: 234,
                           left: 30,
                           child: Container(
                               width: 297,
@@ -142,7 +142,7 @@ class attpageWidget extends StatelessWidget {
                       //           fontWeight: FontWeight.normal,
                       //           height: 1),
                       //     )),
-                      Positioned(
+                      /*Positioned(
                           top: 54,
                           left: 21,
                           child: Container(
@@ -170,7 +170,7 @@ class attpageWidget extends StatelessWidget {
                                               Color.fromRGBO(255, 255, 255, 1),
                                         ))),
                                 Positioned(
-                                    top: 5.473684310913086,
+                                    top: 8,
                                     left: 0,
                                     child: Container(
                                         width: 19,
@@ -178,11 +178,11 @@ class attpageWidget extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           color:
                                               Color.fromRGBO(255, 255, 255, 1),
-                                        ))),
-                              ]))),
+                                      ))),
+                              ]))),*/
                       Positioned(
-                          top: 180,
-                          left: 120,
+                          top: 128,
+                          left: 160,
                           child: Text(
                             'Math',
                             textAlign: TextAlign.center,
@@ -211,7 +211,7 @@ class attpageWidget extends StatelessWidget {
                                 )),
                           )),
                       Positioned(
-                          top: 129,
+                          top: 65,
                           left: 135,
                           child: Container(
                             decoration: BoxDecoration(
@@ -300,35 +300,11 @@ class attpageWidget extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
-                                      Text(
-                                        '9:30',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                247, 250, 248, 1),
-                                            fontFamily: 'Roboto',
-                                            fontSize: 14,
-                                            letterSpacing: 0.25,
-                                            fontWeight: FontWeight.normal,
-                                            height: 1.4285714285714286),
-                                      ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        'Tue, Jul 19',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                255, 255, 255, 1),
-                                            fontFamily: 'Roboto',
-                                            fontSize: 14,
-                                            letterSpacing: 0.25,
-                                            fontWeight: FontWeight.normal,
-                                            height: 1.4285714285714286),
-                                      ),
+
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 4),
+                               // SizedBox(width: 4),
                                 Container(
                                   decoration: BoxDecoration(),
                                   padding: EdgeInsets.symmetric(
@@ -342,33 +318,33 @@ class attpageWidget extends StatelessWidget {
                                             horizontal: 0, vertical: 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            SizedBox(width: 2),
-                                          ],
+                                          //children: <Widget>[
+                                           // SizedBox(width: 2),
+                                         // ],
                                         ),
                                       ),
-                                      SizedBox(width: 0),
+                                      //SizedBox(width: 0),
                                       Container(
                                         decoration: BoxDecoration(),
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 0, vertical: 0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            SizedBox(width: 2),
-                                            Text(
-                                              'Until 10:00 AM',
-                                              textAlign: TextAlign.left,
-                                              style: TextStyle(
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 1),
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 14,
-                                                  letterSpacing: 0.25,
-                                                  fontWeight: FontWeight.normal,
-                                                  height: 1.4285714285714286),
-                                            ),
-                                          ],
+                                         // children: <Widget>[
+                                            //SizedBox(width: 2),
+                                            //Text(
+                                              //'Until 10:00 AM',
+                                              //textAlign: TextAlign.left,
+                                              //style: TextStyle(
+                                                //  color: Color.fromRGBO(
+                                                  //    0, 0, 0, 1),
+                                                 // fontFamily: 'Roboto',
+                                                  //fontSize: 14,
+                                                  //letterSpacing: 0.25,
+                                                  //fontWeight: FontWeight.normal,
+                                                 // height: 1.4285714285714286),
+                                         //   ),
+                                        //  ],
                                         ),
                                       ),
                                     ],
