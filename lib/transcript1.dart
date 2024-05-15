@@ -8,6 +8,7 @@ import 'dart:math' as math;
 import 'dart:math' as math;
 import 'dart:math' as math;
 import 'firebase_options.dart';
+import 'dart:developer';
 
 class trspageWidget extends StatelessWidget {
   final String rollNumber;
@@ -16,15 +17,20 @@ class trspageWidget extends StatelessWidget {
   final DocumentReference mathtrnscriptdocref;
 
   trspageWidget({required this.rollNumber})
-      :
-        userDocRef = FirebaseFirestore.instance.collection('users').doc(rollNumber),
-        trnsCollectionRef = FirebaseFirestore.instance.collection('users').doc(rollNumber).collection('transcript'),
-        mathtrnscriptdocref = FirebaseFirestore.instance.collection('users').doc(rollNumber).collection('transcript').doc('Math');
-
+      : userDocRef =
+            FirebaseFirestore.instance.collection('users').doc(rollNumber),
+        trnsCollectionRef = FirebaseFirestore.instance
+            .collection('users')
+            .doc(rollNumber)
+            .collection('transcript'),
+        mathtrnscriptdocref = FirebaseFirestore.instance
+            .collection('users')
+            .doc(rollNumber)
+            .collection('transcript')
+            .doc('Math');
 
   @override
   Widget build(BuildContext context) {
-
     TextEditingController _queryController = TextEditingController();
     // Figma Flutter Generator MarkspageWidget - FRAME
     return Material(
@@ -54,8 +60,8 @@ class trspageWidget extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MenupageWidget(rn: rollNumber)));
-
+                            builder: (context) =>
+                                MenupageWidget(rn: rollNumber)));
                   },
                 ),
               ),
@@ -65,14 +71,14 @@ class trspageWidget extends StatelessWidget {
                   child: FutureBuilder<DocumentSnapshot>(
                       future: mathtrnscriptdocref.get(),
                       builder: (context, userSnapshot) {
-                        if (userSnapshot.connectionState == ConnectionState.waiting) {
+                        if (userSnapshot.connectionState ==
+                            ConnectionState.waiting) {
                           return Center(
                             child: Text('No Data...'),
                           );
-                        }
-                        else{
-                          Map<String, dynamic>? userData =
-                          userSnapshot.data!.data() as Map<String, dynamic>?;
+                        } else {
+                          Map<String, dynamic>? userData = userSnapshot.data!
+                              .data() as Map<String, dynamic>?;
                           return Container(
                               // width: 360,
                               // height: 640,
@@ -95,7 +101,8 @@ class trspageWidget extends StatelessWidget {
                                           ),
                                           boxShadow: [
                                             BoxShadow(
-                                                color: Color.fromRGBO(0, 0, 0, 0.25),
+                                                color: Color.fromRGBO(
+                                                    0, 0, 0, 0.25),
                                                 offset: Offset(0, 4),
                                                 blurRadius: 4)
                                           ],
@@ -114,7 +121,8 @@ class trspageWidget extends StatelessWidget {
                                             bottomLeft: Radius.circular(25),
                                             bottomRight: Radius.circular(25),
                                           ),
-                                          color: Color.fromRGBO(215, 219, 195, 1),
+                                          color:
+                                              Color.fromRGBO(215, 219, 195, 1),
                                         ))),
                                 Positioned(
                                     top: 0,
@@ -132,11 +140,12 @@ class trspageWidget extends StatelessWidget {
                                       'Transcript',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                          color: Color.fromRGBO(255, 255, 255, 1),
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
                                           fontFamily: 'Jost',
                                           fontSize: 24,
                                           letterSpacing:
-                                          0 /*percentages not used in flutter. defaulting to zero*/,
+                                              0 /*percentages not used in flutter. defaulting to zero*/,
                                           fontWeight: FontWeight.normal,
                                           height: 1),
                                     )),
@@ -154,8 +163,8 @@ class trspageWidget extends StatelessWidget {
                                                   width: 19,
                                                   height: 2.0526316165924072,
                                                   decoration: BoxDecoration(
-                                                    color:
-                                                    Color.fromRGBO(255, 255, 255, 1),
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
                                                   ))),
                                           Positioned(
                                               top: 10.947368621826172,
@@ -164,8 +173,8 @@ class trspageWidget extends StatelessWidget {
                                                   width: 19,
                                                   height: 2.0526316165924072,
                                                   decoration: BoxDecoration(
-                                                    color:
-                                                    Color.fromRGBO(255, 255, 255, 1),
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
                                                   ))),
                                           Positioned(
                                               top: 5.473684310913086,
@@ -174,8 +183,8 @@ class trspageWidget extends StatelessWidget {
                                                   width: 19,
                                                   height: 2.0526316165924072,
                                                   decoration: BoxDecoration(
-                                                    color:
-                                                    Color.fromRGBO(255, 255, 255, 1),
+                                                    color: Color.fromRGBO(
+                                                        255, 255, 255, 1),
                                                   ))),
                                         ]))),
                                 Positioned(
@@ -185,11 +194,12 @@ class trspageWidget extends StatelessWidget {
                                       'Math',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          color: Color.fromRGBO(255, 255, 255, 1),
+                                          color:
+                                              Color.fromRGBO(255, 255, 255, 1),
                                           fontFamily: 'Jost',
                                           fontSize: 12,
                                           letterSpacing:
-                                          0 /*percentages not used in flutter. defaulting to zero*/,
+                                              0 /*percentages not used in flutter. defaulting to zero*/,
                                           fontWeight: FontWeight.normal,
                                           height: 1),
                                     )),
@@ -197,7 +207,8 @@ class trspageWidget extends StatelessWidget {
                                     top: 192,
                                     left: 248,
                                     child: Transform.rotate(
-                                      angle: 89.99999999999999 * (math.pi / 180),
+                                      angle:
+                                          89.99999999999999 * (math.pi / 180),
                                       child: Container(
                                           width: 15,
                                           height: 16,
@@ -221,13 +232,15 @@ class trspageWidget extends StatelessWidget {
                                         ),
                                         boxShadow: [
                                           BoxShadow(
-                                              color: Color.fromRGBO(0, 0, 0, 0.25),
+                                              color:
+                                                  Color.fromRGBO(0, 0, 0, 0.25),
                                               offset: Offset(0, 3),
                                               blurRadius: 4)
                                         ],
                                         color: Color.fromRGBO(48, 49, 44, 1),
                                         border: Border.all(
-                                          color: Color.fromRGBO(254, 254, 254, 1),
+                                          color:
+                                              Color.fromRGBO(254, 254, 254, 1),
                                           width: 1,
                                         ),
                                       ),
@@ -240,11 +253,12 @@ class trspageWidget extends StatelessWidget {
                                             'Summer 1878',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                                color: Color.fromRGBO(255, 255, 255, 1),
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
                                                 fontFamily: 'Jost',
                                                 fontSize: 12,
                                                 letterSpacing:
-                                                0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    0 /*percentages not used in flutter. defaulting to zero*/,
                                                 fontWeight: FontWeight.normal,
                                                 height: 1),
                                           ),
@@ -264,13 +278,15 @@ class trspageWidget extends StatelessWidget {
                                             bottomLeft: Radius.circular(25),
                                             bottomRight: Radius.circular(25),
                                           ),
-                                          color: Color.fromRGBO(225, 241, 151, 1),
+                                          color:
+                                              Color.fromRGBO(225, 241, 151, 1),
                                         ))),
                                 Positioned(
                                     top: 149,
                                     left: 224,
                                     child: Transform.rotate(
-                                      angle: 89.99999999999999 * (math.pi / 180),
+                                      angle:
+                                          89.99999999999999 * (math.pi / 180),
                                       child: Container(
                                           width: 14,
                                           height: 13,
@@ -307,8 +323,10 @@ class trspageWidget extends StatelessWidget {
                                                       fontFamily: 'Roboto',
                                                       fontSize: 14,
                                                       letterSpacing: 0.25,
-                                                      fontWeight: FontWeight.normal,
-                                                      height: 1.4285714285714286),
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      height:
+                                                          1.4285714285714286),
                                                 ),
                                                 SizedBox(width: 8),
                                                 Text(
@@ -320,8 +338,10 @@ class trspageWidget extends StatelessWidget {
                                                       fontFamily: 'Roboto',
                                                       fontSize: 14,
                                                       letterSpacing: 0.25,
-                                                      fontWeight: FontWeight.normal,
-                                                      height: 1.4285714285714286),
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      height:
+                                                          1.4285714285714286),
                                                 ),
                                               ],
                                             ),
@@ -337,9 +357,11 @@ class trspageWidget extends StatelessWidget {
                                                 Container(
                                                   decoration: BoxDecoration(),
                                                   padding: EdgeInsets.symmetric(
-                                                      horizontal: 0, vertical: 0),
+                                                      horizontal: 0,
+                                                      vertical: 0),
                                                   child: Row(
-                                                    mainAxisSize: MainAxisSize.min,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
                                                     children: <Widget>[
                                                       SizedBox(width: 2),
                                                     ],
@@ -349,22 +371,30 @@ class trspageWidget extends StatelessWidget {
                                                 Container(
                                                   decoration: BoxDecoration(),
                                                   padding: EdgeInsets.symmetric(
-                                                      horizontal: 0, vertical: 0),
+                                                      horizontal: 0,
+                                                      vertical: 0),
                                                   child: Row(
-                                                    mainAxisSize: MainAxisSize.min,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
                                                     children: <Widget>[
                                                       SizedBox(width: 2),
                                                       Text(
                                                         'Until 10:00 AM',
-                                                        textAlign: TextAlign.left,
+                                                        textAlign:
+                                                            TextAlign.left,
                                                         style: TextStyle(
-                                                            color: Color.fromRGBO(
-                                                                0, 0, 0, 1),
-                                                            fontFamily: 'Roboto',
+                                                            color:
+                                                                Color.fromRGBO(
+                                                                    0, 0, 0, 1),
+                                                            fontFamily:
+                                                                'Roboto',
                                                             fontSize: 14,
                                                             letterSpacing: 0.25,
-                                                            fontWeight: FontWeight.normal,
-                                                            height: 1.4285714285714286),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            height:
+                                                                1.4285714285714286),
                                                       ),
                                                     ],
                                                   ),
@@ -377,7 +407,8 @@ class trspageWidget extends StatelessWidget {
                                               width: 12,
                                               height: 12,
                                               decoration: BoxDecoration(
-                                                color: Color.fromRGBO(255, 255, 255, 1),
+                                                color: Color.fromRGBO(
+                                                    255, 255, 255, 1),
                                               ),
                                               child: Stack(children: <Widget>[
                                                 Positioned(
@@ -386,18 +417,25 @@ class trspageWidget extends StatelessWidget {
                                                     child: Container(
                                                         width: 18,
                                                         height: 18,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius.only(
-                                                            topLeft: Radius.circular(100),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    100),
                                                             topRight:
-                                                            Radius.circular(100),
+                                                                Radius.circular(
+                                                                    100),
                                                             bottomLeft:
-                                                            Radius.circular(100),
+                                                                Radius.circular(
+                                                                    100),
                                                             bottomRight:
-                                                            Radius.circular(100),
+                                                                Radius.circular(
+                                                                    100),
                                                           ),
-                                                          color:
-                                                          Color.fromRGBO(0, 0, 0, 1),
+                                                          color: Color.fromRGBO(
+                                                              0, 0, 0, 1),
                                                         ))),
                                               ])),
                                         ],
@@ -417,7 +455,6 @@ class trspageWidget extends StatelessWidget {
                                           fontWeight: FontWeight.normal,
                                           height: 1.4285714285714286),
                                     )),
-
                                 Positioned(
                                   top: 320,
                                   left: 47,
@@ -426,11 +463,12 @@ class trspageWidget extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
-
                                           'hardcode',
                                           //'date ${userData?['date'][0] ?? 'No Date'}',
                                           style: TextStyle(
@@ -439,26 +477,30 @@ class trspageWidget extends StatelessWidget {
                                         ),
                                         SizedBox(height: 4),
                                         Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start of the row
+                                          crossAxisAlignment: CrossAxisAlignment
+                                              .start, // Aligns children to the start of the row
                                           children: [
                                             // Column for lecture duration
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start of the column
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start, // Aligns children to the start of the column
                                               children: [
-
-                                                  Text(
-                                                    '${userData?['code'] ?? 'No Email'}',
-                                                    style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      fontWeight: FontWeight.w500,
-                                                    ),
+                                                Text(
+                                                  '${userData?['code'] ?? 'No Email'}',
+                                                  style: TextStyle(
+                                                    fontSize: 12.5,
+                                                    fontWeight: FontWeight.w500,
                                                   ),
+                                                ),
                                               ],
                                             ),
-                                            SizedBox(width: 30), // Adds some spacing between the columns
+                                            SizedBox(
+                                                width:
+                                                    30), // Adds some spacing between the columns
                                             // Column for present
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start of the column
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start, // Aligns children to the start of the column
                                               children: [
                                                 Text(
                                                   '${userData?['courseName'] ?? 'No name'}',
@@ -469,10 +511,13 @@ class trspageWidget extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(width: 30), // Adds some spacing between the columns
+                                            SizedBox(
+                                                width:
+                                                    30), // Adds some spacing between the columns
                                             // Column for present
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start of the column
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start, // Aligns children to the start of the column
                                               children: [
                                                 Text(
                                                   '${userData?['credits'] ?? 'No Email'}',
@@ -483,10 +528,13 @@ class trspageWidget extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            SizedBox(width: 50), // Adds some spacing between the columns
+                                            SizedBox(
+                                                width:
+                                                    50), // Adds some spacing between the columns
                                             // Column for present
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start, // Aligns children to the start of the column
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start, // Aligns children to the start of the column
                                               children: [
                                                 Text(
                                                   '${userData?['points'] ?? 'No Email'}',
@@ -557,38 +605,45 @@ class trspageWidget extends StatelessWidget {
                                             bottomLeft: Radius.circular(0),
                                             bottomRight: Radius.circular(0),
                                           ),
-                                          color: Color.fromRGBO(158, 169, 106, 1),
+                                          color:
+                                              Color.fromRGBO(158, 169, 106, 1),
                                         ))),
                                 Positioned(
                                     top: 392,
                                     left: 47,
                                     child: Divider(
-                                        color: Color.fromRGBO(0, 0, 0, 1), thickness: 1)),
+                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                        thickness: 1)),
                                 Positioned(
                                     top: 424,
                                     left: 47,
                                     child: Divider(
-                                        color: Color.fromRGBO(0, 0, 0, 1), thickness: 1)),
+                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                        thickness: 1)),
                                 Positioned(
                                     top: 456,
                                     left: 47,
                                     child: Divider(
-                                        color: Color.fromRGBO(0, 0, 0, 1), thickness: 1)),
+                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                        thickness: 1)),
                                 Positioned(
                                     top: 488,
                                     left: 47,
                                     child: Divider(
-                                        color: Color.fromRGBO(0, 0, 0, 1), thickness: 1)),
+                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                        thickness: 1)),
                                 Positioned(
                                     top: 520,
                                     left: 47,
                                     child: Divider(
-                                        color: Color.fromRGBO(0, 0, 0, 1), thickness: 1)),
+                                        color: Color.fromRGBO(0, 0, 0, 1),
+                                        thickness: 1)),
                                 Positioned(
                                     top: 552,
                                     left: 100,
                                     child: Transform.rotate(
-                                      angle: 90.00000000000001 * (math.pi / 180),
+                                      angle:
+                                          90.00000000000001 * (math.pi / 180),
                                       child: Divider(
                                           color: Color.fromRGBO(0, 0, 0, 1),
                                           thickness: 1),
@@ -597,7 +652,8 @@ class trspageWidget extends StatelessWidget {
                                     top: 552,
                                     left: 157,
                                     child: Transform.rotate(
-                                      angle: 90.00000000000001 * (math.pi / 180),
+                                      angle:
+                                          90.00000000000001 * (math.pi / 180),
                                       child: Divider(
                                           color: Color.fromRGBO(0, 0, 0, 1),
                                           thickness: 1),
@@ -606,7 +662,8 @@ class trspageWidget extends StatelessWidget {
                                     top: 552,
                                     left: 237,
                                     child: Transform.rotate(
-                                      angle: 90.00000000000001 * (math.pi / 180),
+                                      angle:
+                                          90.00000000000001 * (math.pi / 180),
                                       child: Divider(
                                           color: Color.fromRGBO(0, 0, 0, 1),
                                           thickness: 1),
@@ -616,8 +673,8 @@ class trspageWidget extends StatelessWidget {
                                   left: 54,
                                   child: Text(
                                     'code',
-                                    textAlign:
-                                    TextAlign.center, // Align the text to the center
+                                    textAlign: TextAlign
+                                        .center, // Align the text to the center
                                     style: TextStyle(
                                       color: Color.fromRGBO(0, 0, 0, 1),
                                       fontFamily: 'Jost',
@@ -633,8 +690,8 @@ class trspageWidget extends StatelessWidget {
                                   left: 127,
                                   child: Text(
                                     'name',
-                                    textAlign:
-                                    TextAlign.center, // Align the text to the center
+                                    textAlign: TextAlign
+                                        .center, // Align the text to the center
                                     style: TextStyle(
                                       color: Color.fromRGBO(0, 0, 0, 1),
                                       fontFamily: 'Jost',
@@ -656,7 +713,7 @@ class trspageWidget extends StatelessWidget {
                                           fontFamily: 'Jost',
                                           fontSize: 11.5,
                                           letterSpacing:
-                                          0 /*percentages not used in flutter. defaulting to zero*/,
+                                              0 /*percentages not used in flutter. defaulting to zero*/,
                                           fontWeight: FontWeight.normal,
                                           height: 1.2173913043478262),
                                     )),
@@ -671,39 +728,47 @@ class trspageWidget extends StatelessWidget {
                                           fontFamily: 'Jost',
                                           fontSize: 11.5,
                                           letterSpacing:
-                                          0 /*percentages not used in flutter. defaulting to zero*/,
+                                              0 /*percentages not used in flutter. defaulting to zero*/,
                                           fontWeight: FontWeight.normal,
                                           height: 1),
                                     )),
-
-
                                 Positioned(
-                                  top: 463, // Adjust the top position as needed
-                                  left: 241, // Adjust the left position as needed
+                                  top: 520, // Adjust the top position as needed
+                                  left: 115, // Adjust the left position as needed
                                   child: Container(
                                     width: 120, // Adjust the width as needed
                                     height: 40, // Adjust the height as needed
                                     decoration: BoxDecoration(
-                                      color: Colors.grey[300], // Adjust the color as needed
-                                      borderRadius: BorderRadius.circular(8.0), // Adjust the border radius as needed
+                                      color: Colors.black12, // Adjust the color as needed
+                                      borderRadius: BorderRadius.circular(
+                                          8.0), // Adjust the border radius as needed
                                     ),
                                     child: Center(
-                                      child: Text(
-
-                                          'CGPA: ${ calculateCGPA()}',
-                                    // Assuming calculateCGPA() is a function that returns the CGPA
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14.0,
-                                        ),
-                                      ),
-                                    ),
+                                        child: FutureBuilder<String>(
+                                      future: calculateCGPA(),
+                                      builder: (BuildContext context,
+                                          AsyncSnapshot<String> snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return CircularProgressIndicator(); // Loading indicator
+                                        } else if (snapshot.hasError) {
+                                          return Text(
+                                              'Error: ${snapshot.error}');
+                                        } else {
+                                          // Access the calculated CGPA value from the snapshot
+                                          String cgpaValue = snapshot.data ?? '';
+                                          return Text(
+                                            'CGPA: $cgpaValue',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 14.0,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    )),
                                   ),
                                 ),
-
-
-
                                 Positioned(
                                   top: 590,
                                   left: 132,
@@ -712,14 +777,16 @@ class trspageWidget extends StatelessWidget {
                                       // Add your logic to show the popup here
                                       // For example:
                                       showDialog(
-                                        context: context, // Replace 'context' with your BuildContext variable
+                                        context:
+                                            context, // Replace 'context' with your BuildContext variable
                                         builder: (BuildContext context) {
                                           return AlertDialog(
                                             title: Text("Query"),
                                             content: TextField(
                                               controller: _queryController,
                                               decoration: InputDecoration(
-                                                hintText: "Enter your query here",
+                                                hintText:
+                                                    "Enter your query here",
                                               ),
                                             ),
                                             actions: [
@@ -731,16 +798,17 @@ class trspageWidget extends StatelessWidget {
                                               ),
                                               TextButton(
                                                 onPressed: () {
-                                                  String query = _queryController.text;
+                                                  String query =
+                                                      _queryController.text;
                                                   if (query.isNotEmpty) {
-                                                    _saveQueryToFirestore(query);
+                                                    _saveQueryToFirestore(
+                                                        query);
                                                     _queryController.clear();
                                                     Navigator.of(context).pop();
                                                   }
                                                 },
                                                 child: Text("Save"),
                                               ),
-
                                             ],
                                           );
                                         },
@@ -751,7 +819,8 @@ class trspageWidget extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(25),
                                         color: Color.fromRGBO(0, 0, 0, 1),
                                       ),
-                                      padding: EdgeInsets.symmetric(horizontal: 37, vertical: 2),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 37, vertical: 2),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: <Widget>[
@@ -759,7 +828,8 @@ class trspageWidget extends StatelessWidget {
                                             'Raise Query',
                                             textAlign: TextAlign.left,
                                             style: TextStyle(
-                                              color: Color.fromRGBO(255, 255, 255, 1),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 1),
                                               fontFamily: 'Jost',
                                               fontSize: 11,
                                               letterSpacing: 0.25,
@@ -785,20 +855,14 @@ class trspageWidget extends StatelessWidget {
                                             bottomLeft: Radius.circular(25),
                                             bottomRight: Radius.circular(25),
                                           ),
-                                          color: Color.fromRGBO(151, 255, 134, 1),
+                                          color:
+                                              Color.fromRGBO(151, 255, 134, 1),
                                         ))),
                               ]));
                         }
-                      }
-                  )
-
-              ),
+                      })),
             )));
   }
-
-
-
-
 
   Future<void> _saveQueryToFirestore(String query) async {
     // Get a Firestore instance
@@ -806,42 +870,46 @@ class trspageWidget extends StatelessWidget {
 
     // Reference to the Firestore document named "q1" in the "queries" collection
 
-
     // Update the document to add the query to the array field
     firestore.runTransaction((transaction) async {
       // Get the current snapshot of the document
-      DocumentSnapshot snapshot = await transaction.get( mathtrnscriptdocref);
+      DocumentSnapshot snapshot = await transaction.get(mathtrnscriptdocref);
 
       // Get the current array field value (or create an empty array if it doesn't exist)
       List<dynamic> currentQueries = snapshot.exists
-          ? (snapshot.data() != null ? (snapshot.data()! as Map<String, dynamic>)['qr'] ?? [] : [])
+          ? (snapshot.data() != null
+              ? (snapshot.data()! as Map<String, dynamic>)['qr'] ?? []
+              : [])
           : ['no lecture duration'];
-
 
       // Add the new query to the array
       currentQueries.add(query);
       String cn = 'Math';
       // Update the document with the new array value
-      transaction.update( mathtrnscriptdocref, {'qr': currentQueries});
+      transaction.update(mathtrnscriptdocref, {'qr': currentQueries});
 
-      await  mathtrnscriptdocref.update({'qs': FieldValue.arrayUnion(['new'])});
+      await mathtrnscriptdocref.update({
+        'qs': FieldValue.arrayUnion(['new'])
+      });
 
-
-      DocumentSnapshot teacherDoc = await firestore.collection('users').doc('admin').get();
+      DocumentSnapshot teacherDoc =
+          await firestore.collection('users').doc('admin').get();
       if (teacherDoc.exists) {
+        String notificationMessage =
+            'New query from student $rollNumber in course $cn';
 
-        String notificationMessage = 'New query from student $rollNumber in course $cn';
-
-        await firestore.collection('users').doc('admin').collection('notifications').add({
+        await firestore
+            .collection('users')
+            .doc('admin')
+            .collection('notifications')
+            .add({
           'message': 'New query from student $rollNumber in course $cn',
-          'timestamp': FieldValue.serverTimestamp(), 'fromp': '$rollNumber', 'on': 'transcript',
+          'timestamp': FieldValue.serverTimestamp(),
+          'fromp': '$rollNumber',
+          'on': 'transcript',
           'description': '$query'
         });
-
-
       }
-
-
     }).then((value) {
       // Successfully updated document
       print('Query saved successfully: $query');
@@ -849,14 +917,9 @@ class trspageWidget extends StatelessWidget {
       // Failed to update document
       print('Failed to save query: $error');
     });
-
-
-
   }
 
-
-
-  Future<double> calculateCGPA() async {
+  Future<String> calculateCGPA() async {
     double totalPoints = 0;
     int totalCredits = 0;
 
@@ -868,13 +931,13 @@ class trspageWidget extends StatelessWidget {
 
     // Iterate over each document to calculate total points and credits
     querySnapshot.docs.forEach((DocumentSnapshot courseDoc) {
-      // Assuming 'points' is the field containing the points for each course
+      Map<String, dynamic>? courseDocData =
+          courseDoc.data() as Map<String, dynamic>?;
+      double points =
+          double.tryParse(courseDocData?['points']?.toString() ?? '0') ?? 0;
 
-      Map<String, dynamic>? courseDocData = courseDoc.data() as Map<String, dynamic>?;
-      int points = courseDocData?['points'] ?? '';
-
-
-      int credits = courseDocData?['credits'] ?? ''; // Assuming each course has a 'credits' field
+      int credits =
+          int.tryParse(courseDocData?['credits']?.toString() ?? '0') ?? 0;
 
       totalPoints += points * credits;
       totalCredits += credits;
@@ -882,11 +945,9 @@ class trspageWidget extends StatelessWidget {
 
     // Calculate the CGPA using the weighted average formula
     double cgpa = totalPoints / totalCredits;
+    String result = cgpa.toString();
 
     // Return the calculated CGPA
-    return cgpa;
+    return result;
   }
-
-
-
 }

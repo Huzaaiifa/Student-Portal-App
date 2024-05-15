@@ -176,60 +176,60 @@ class MenupageWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SecondPage(rn: rn)));
-                  // Action when Fee Challan button is pressed
-                },
-                child: Text(
-                  'Fee Challan',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SecondPage(rn: rn)));
-                  // Action when Course Feedback button is pressed
-                },
-                child: Text(
-                  'Course Feedback',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Jost',
-                    fontSize: 14,
-                    letterSpacing: 0.25,
-                    fontWeight: FontWeight.normal,
-                    height: 1.4285714285714286,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(48, 49, 44, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                ),
-              ),
+              //SizedBox(height: 10),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => SecondPage(rn: rn)));
+              //     // Action when Fee Challan button is pressed
+              //   },
+              //   child: Text(
+              //     'Fee Challan',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontFamily: 'Jost',
+              //       fontSize: 14,
+              //       letterSpacing: 0.25,
+              //       fontWeight: FontWeight.normal,
+              //       height: 1.4285714285714286,
+              //     ),
+              //   ),
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Color.fromRGBO(48, 49, 44, 1),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(25),
+              //     ),
+              //   ),
+              // ),
+              //SizedBox(height: 10),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => SecondPage(rn: rn)));
+              //     // Action when Course Feedback button is pressed
+              //   },
+              //   child: Text(
+              //     'Course Feedback',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontFamily: 'Jost',
+              //       fontSize: 14,
+              //       letterSpacing: 0.25,
+              //       fontWeight: FontWeight.normal,
+              //       height: 1.4285714285714286,
+              //     ),
+              //   ),
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Color.fromRGBO(48, 49, 44, 1),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(25),
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
