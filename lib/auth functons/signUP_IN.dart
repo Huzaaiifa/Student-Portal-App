@@ -19,6 +19,9 @@ signUp(String email, String password) async{
   }
 }
 
+
+
+
 Future<int> signIn(String email, String password) async {
   try {
     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -26,18 +29,26 @@ Future<int> signIn(String email, String password) async {
       password: password,
     );
     email = email.toUpperCase().trim();
-    if (email.contains('L')) {
 
-      return 1; // Return 'student' for student users
-    } else if (email.contains('T')) {
-      return 2; // Return 'teacher' for teacher users
-    } else if (email == 'admin@gmail.com') {
-      return 3; // Return 'admin' for admin users
-    } else {
-      return -1; // Return 'unknown' for other users
+    print('$email in signin auth ');
+
+    if (email.length >= 3) {
+      if (email[2] == 'L') {
+        return 1;
+      }
+      else if (email[2] == 'T'){
+        return 2;
+      }
+      else{
+        return -1;
+      }
     }
-    print("Successful sign-in");
-    return 1; // Return 1 for successful login
+    else{
+      return -1;
+    }
+
+    //print("Successful sign-in");
+     // Return 1 for successful login
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       print('No user found for that email.');

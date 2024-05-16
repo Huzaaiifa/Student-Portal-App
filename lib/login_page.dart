@@ -39,10 +39,13 @@ class _FirstPageIPState extends State<FirstPageIP> {
 
 
   Widget build(BuildContext context) {
+
     return Scaffold(
+
       appBar: AppBar(
         title: const Text("Sign In"),
       ),
+
       body: Form(
         key: _formkey,
         child: Container(
@@ -156,9 +159,10 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   if(_formkey.currentState!.validate()){
                     _formkey.currentState!.save();
                   }
-                  log(roll_nm);
+                  log('roll_nm for teacyher is $roll_nm');
 
                   int result = await signIn(roll_nm, password);
+                  log('res is: $result');
                   if(result == 1) {
 
                     Navigator.push(
@@ -171,7 +175,6 @@ class _FirstPageIPState extends State<FirstPageIP> {
                   }
                   else if(result == 2)
                   {
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(

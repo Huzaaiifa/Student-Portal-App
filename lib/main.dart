@@ -30,11 +30,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
        home: const TransitionPage(),
-       // home: thome (rn: "t1")
+       //home: thome (rn: "t1")
     );
   }
 }

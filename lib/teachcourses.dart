@@ -30,7 +30,7 @@ class teachcourses extends StatelessWidget {
             title: Padding(
               padding: EdgeInsets.only(left: 12),
               child: Text(
-                'Enrolled Courses',
+                'Teaching Courses',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w900,

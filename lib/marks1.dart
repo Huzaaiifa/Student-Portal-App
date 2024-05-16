@@ -296,13 +296,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                 ),
                                               ),
                                               SizedBox(width: 20),
-                                              Text(
-                                                'Average',
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+
                                             ],
                                           ),
                                           SizedBox(height: 10),
@@ -310,10 +304,10 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                           ...quizDocs.asMap().entries.map((entry) {
                                             int index = entry.key + 1; // Quiz index
                                             QueryDocumentSnapshot quizDoc = entry.value;
-                                            String quizTitle = 'Quiz $index'; // Label each entry as Quiz 1, Quiz 2, etc.
+                                            String quizTitle = '#$index'; // Label each entry as Quiz 1, Quiz 2, etc.
                                             String quizObtained = quizDoc['obtained']?.toString() ?? 'N/A';
                                             String quizTotal = quizDoc['total']?.toString() ?? 'N/A';
-                                            String quizAvg = quizDoc['avg']?.toString() ?? 'N/A';
+
 
                                             return Row(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -342,13 +336,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                   ),
                                                 ),
                                                 SizedBox(width: 20),
-                                                Text(
-                                                  '$quizAvg',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.normal,
-                                                  ),
-                                                ),
+
                                               ],
                                             );
                                           }).toList(),
@@ -413,13 +401,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                 ),
                                               ),
                                               SizedBox(width: 20),
-                                              Text(
-                                                'Average',
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+
                                             ],
                                           ),
                                           SizedBox(height: 10),
@@ -427,10 +409,10 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                           ...quizDocs.asMap().entries.map((entry) {
                                             int index = entry.key + 1; // Quiz index
                                             QueryDocumentSnapshot quizDoc = entry.value;
-                                            String quizTitle = 'Quiz $index'; // Label each entry as Quiz 1, Quiz 2, etc.
+                                            String quizTitle = '#$index'; // Label each entry as Quiz 1, Quiz 2, etc.
                                             String quizObtained = quizDoc['obtained']?.toString() ?? 'N/A';
                                             String quizTotal = quizDoc['total']?.toString() ?? 'N/A';
-                                            String quizAvg = quizDoc['avg']?.toString() ?? 'N/A';
+
 
                                             return Row(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,13 +441,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                   ),
                                                 ),
                                                 SizedBox(width: 20),
-                                                Text(
-                                                  '$quizAvg',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.normal,
-                                                  ),
-                                                ),
+
                                               ],
                                             );
                                           }).toList(),
@@ -531,13 +507,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                 ),
                                               ),
                                               SizedBox(width: 20),
-                                              Text(
-                                                'Average',
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
-                                              ),
+
                                             ],
                                           ),
                                           SizedBox(height: 10),
@@ -545,10 +515,10 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                           ...quizDocs.asMap().entries.map((entry) {
                                             int index = entry.key + 1; // Quiz index
                                             QueryDocumentSnapshot quizDoc = entry.value;
-                                            String quizTitle = 'Quiz $index'; // Label each entry as Quiz 1, Quiz 2, etc.
+                                            String quizTitle = '#$index'; // Label each entry as Quiz 1, Quiz 2, etc.
                                             String quizObtained = quizDoc['obtained']?.toString() ?? 'N/A';
                                             String quizTotal = quizDoc['total']?.toString() ?? 'N/A';
-                                            String quizAvg = quizDoc['avg']?.toString() ?? 'N/A';
+
 
                                             return Row(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -577,13 +547,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                   ),
                                                 ),
                                                 SizedBox(width: 20),
-                                                Text(
-                                                  '$quizAvg',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.normal,
-                                                  ),
-                                                ),
+
                                               ],
                                             );
                                           }).toList(),
@@ -657,10 +621,10 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                           ...quizDocs.asMap().entries.map((entry) {
                                             int index = entry.key + 1; // Quiz index
                                             QueryDocumentSnapshot quizDoc = entry.value;
-                                            String quizTitle = 'Quiz $index'; // Label each entry as Quiz 1, Quiz 2, etc.
+                                            String quizTitle = '#$index'; // Label each entry as Quiz 1, Quiz 2, etc.
                                             String quizObtained = quizDoc['obtained']?.toString() ?? 'N/A';
                                             String quizTotal = quizDoc['total']?.toString() ?? 'N/A';
-                                            String quizAvg = quizDoc['avg']?.toString() ?? 'N/A';
+
 
                                             return Row(
                                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -689,13 +653,7 @@ class _MarkspageWidget extends State<MarkspageWidget> {
                                                   ),
                                                 ),
                                                 SizedBox(width: 20),
-                                                Text(
-                                                  '$quizAvg',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.normal,
-                                                  ),
-                                                ),
+
                                               ],
                                             );
                                           }).toList(),

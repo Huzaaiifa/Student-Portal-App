@@ -27,7 +27,7 @@ class _thome extends State<thome> {
 
   @override
   Widget build(BuildContext build) {
-    String rollNm = widget.rn.substring(0, 2);
+    String rollNm = widget.rn.substring(0, 7);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(65),
