@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Simple Navigation',
       theme: ThemeData(fontFamily: 'Jost'),
-       //home: const TransitionPage(),
-        home: thome (rn: "t1")
+       home: const TransitionPage(),
+       // home: thome (rn: "t1")
     );
   }
 }

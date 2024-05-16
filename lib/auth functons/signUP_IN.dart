@@ -25,12 +25,14 @@ Future<int> signIn(String email, String password) async {
       email: email,
       password: password,
     );
+    email = email.toUpperCase().trim();
     if (email.contains('L')) {
+
       return 1; // Return 'student' for student users
-    } else if (email.contains('t')) {
+    } else if (email.contains('T')) {
       return 2; // Return 'teacher' for teacher users
     } else if (email == 'admin@gmail.com') {
-      return 0; // Return 'admin' for admin users
+      return 3; // Return 'admin' for admin users
     } else {
       return -1; // Return 'unknown' for other users
     }
